@@ -1,13 +1,14 @@
 {
-  "name": "mern",
+  "name": "podpond",
   "version": "0.1.0",
-  "description": "Mern Demo",
+  "description": "Project 3",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
