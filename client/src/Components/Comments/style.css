@@ -17,10 +17,6 @@ body {
     font-weight: 500
 }
 
-.form-control: focus {
-    color: #000
-}
-
 .second {
     width: 350px;
     background-color: white;
@@ -34,44 +30,3 @@ body {
     color: #56575b
 }
 
-.text2 {
-    font-size: 13px;
-    font-weight: 500;
-    margin-left: 6px;
-    color: #56575b
-}
-
-.text3 {
-    font-size: 13px;
-    font-weight: 500;
-    margin-right: 4px;
-    color: #828386
-}
-
-.text3o {
-    color: #00a5f4
-}
-
-.text4 {
-    font-size: 13px;
-    font-weight: 500;
-    color: #828386
-}
-
-.text4i {
-    color: #00a5f4
-}
-
-.text4o {
-    color: white
-}
-
-.thumbup {
-    font-size: 13px;
-    font-weight: 500;
-    margin-right: 5px
-}
-
-.thumbupo {
-    color: #17a2b8
-}
