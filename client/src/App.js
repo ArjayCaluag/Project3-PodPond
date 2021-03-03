@@ -4,6 +4,8 @@ import "./App.css";
 import NavBar from "./Components/NavBar";
 import Jumbotron from "./Components/Jumbotron"
 import PodCastCard from "./Components/PodcastCard"
+import SearchBar from "./Components/SearchBar"
+import CommentSection from "./Components/Comments"
 
 
 function App() {
@@ -11,7 +13,9 @@ function App() {
     <Router>
       <NavBar/>
       <Jumbotron/>
+      <SearchBar/>
       <PodCastCard/>
+      <CommentSection/>
       
       <Switch>
         <Route exact path={["/search", "/"]}  />
