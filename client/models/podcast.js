@@ -2,13 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const podSchema = new Schema({
-    username: {
+    title: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
-    password: {
-        type: String
-    }
+    commentIDs: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ]
 });
 
 const Podcast = mongoose.model("Podcast", podSchema);
