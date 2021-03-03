@@ -1,7 +1,11 @@
 {
   "name": "podpond",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "Project 3",
+=======
+  "description": "Project3",
+>>>>>>> 05791ea5213e0bceeae4f18fecea7812b663cb0e
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
