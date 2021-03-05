@@ -14,6 +14,7 @@ import "./App.css";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
 import LandingPage from "./pages/LandingPage";
+import SearchPage from "./pages/SearchPage";
 
 class App extends Component {
   constructor() {
@@ -132,7 +133,7 @@ class App extends Component {
 
           <Switch>
             <Route exact path="/" component ={LandingPage}/>
-            <Route exact path="/search" />
+            <Route exact path="/search" component = {SearchPage} />
             <Route exact path="/mypond" />
             <Route exact path="*" />
           </Switch>
