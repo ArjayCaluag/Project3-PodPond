@@ -13,6 +13,7 @@ import CommentSection from "./Components/Comments";
 import "./App.css";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
+import LandingPage from "./pages/LandingPage";
 
 class App extends Component {
   constructor() {
@@ -121,16 +122,17 @@ class App extends Component {
         </header>
 
         <Router>
-          <NavBar />
-          <Jumbotron />
-          <LoginForm/>
+          
+          {/* <Jumbotron />
+          
           <SignUpForm/>
           <SearchBar />
           <PodCastCard />
-          <CommentSection />
+          <CommentSection /> */}
 
           <Switch>
-            <Route exact path={["/search", "/"]} />
+            <Route exact path="/" component ={LandingPage}/>
+            <Route exact path="/search" />
             <Route exact path="/mypond" />
             <Route exact path="*" />
           </Switch>
