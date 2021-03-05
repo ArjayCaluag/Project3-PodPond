@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   return (
@@ -41,7 +42,7 @@ function LoginForm() {
         </form>
 
         <div class="text-center">
-          First time User? <a href="#">Register</a>
+          First time User? <Link to ="/signup">Register</Link>
         </div>
       </div>
     </div>
