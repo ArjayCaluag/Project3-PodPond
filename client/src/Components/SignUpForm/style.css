@@ -80,7 +80,7 @@
 /* ANIMATIONS */
   
   /* Simple CSS3 Fade-in-down Animation */
-  .fadeInDown {
+  .fadeInDownSignUp {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
@@ -138,13 +138,13 @@
 
   /* Can add specific classes to fade effect later */
   
-  /* .fadeIn.first {
+  .fadeIn.first {
     -webkit-animation-delay: 0.4s;
     -moz-animation-delay: 0.4s;
     animation-delay: 0.4s;
   }
   
-  .fadeIn.second {
+  /* .fadeIn.second {
     -webkit-animation-delay: 0.6s;
     -moz-animation-delay: 0.6s;
     animation-delay: 0.6s;
