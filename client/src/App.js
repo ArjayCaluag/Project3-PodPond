@@ -15,6 +15,7 @@ import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
 import LandingPage from "./pages/LandingPage";
 import SearchPage from "./pages/SearchPage";
+import SavedPodcast from "./pages/SavedPodcast";
 
 class App extends Component {
   constructor() {
@@ -134,7 +135,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component ={LandingPage}/>
             <Route exact path="/search" component = {SearchPage} />
-            <Route exact path="/mypond" />
+            <Route exact path="/mypond" component = {SavedPodcast}/>
             <Route exact path="*" />
           </Switch>
         </Router>
