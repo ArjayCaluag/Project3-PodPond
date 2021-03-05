@@ -12,6 +12,7 @@ import SearchBar from "./Components/SearchBar";
 import CommentSection from "./Components/Comments";
 import "./App.css";
 import LoginForm from "./Components/LoginForm";
+import SignUpForm from "./Components/SignUpForm";
 
 class App extends Component {
   constructor() {
@@ -123,6 +124,7 @@ class App extends Component {
           <NavBar />
           <Jumbotron />
           <LoginForm/>
+          <SignUpForm/>
           <SearchBar />
           <PodCastCard />
           <CommentSection />

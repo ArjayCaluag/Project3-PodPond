@@ -3,33 +3,48 @@ import "./style.css";
 
 function LoginForm() {
   return (
+    <div class="wrapper fadeInDownLogin">
+      <div class="login-form">
+        <form action="/examples/actions/confirmation.php" method="post">
+          <h2>Login</h2>
 
-    <div class="wrapper fadeInDown">
-      <div id="formContent">
-        {/* <!-- Tabs Titles --> */}
-    
-        {/* <!-- Our site icon --> */}
-        {/* <div class="fadeIn first">
-          <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-        </div> */}
-    
-        {/* <!-- Login Form --> */}
-        <form>
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username"/>
-          <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password"/>
-          <input type="submit" class="fadeIn fourth" value="Log In"/>
+          <div class="form-group">
+            <input
+              type="username"
+              class="form-control"
+              name="username"
+              placeholder="Username"
+              required="required"
+              // data-fillr-id="1081205151"
+              // data-fillr="bound"
+              autocomplete="off"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              required="required"
+              // data-fillr-id="938218994"
+              // data-fillr="bound"
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">
+              Login Now
+            </button>
+          </div>
         </form>
-{/*     
-        <!-- Remind Passowrd --> */}
-        <div id="formFooter">
-          <a class="underlineHover" href="#"> Not a registered user? Sign up here</a>
+
+        <div class="text-center">
+          First time User? <a href="#">Register</a>
         </div>
-    
       </div>
     </div>
-
-
-
   );
 }
 
