@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom"
 import "./style.css";
 
 function SignUpForm() {
@@ -38,18 +38,6 @@ function SignUpForm() {
               autocomplete="off"
             />
           </div>
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              name="confirm_password"
-              placeholder="Confirm Password"
-              required="required"
-              data-fillr-id="151220269"
-              data-fillr="bound"
-              autocomplete="off"
-            />
-          </div>
       
           <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg btn-block">
@@ -59,7 +47,7 @@ function SignUpForm() {
         </form>
 
         <div class="text-center">
-          Already have an account? <a href="#">Sign in</a>
+          Already have an account? <Link to = "/" >Sign in</Link>
         </div>
       </div>
     </div>
