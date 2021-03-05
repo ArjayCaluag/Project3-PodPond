@@ -1,5 +1,4 @@
 var passport = require("passport");
-const passportLocalMongoose = require('passport-local-mongoose'); 
 
 var db = require("../models");
 // import User model, reference as db.User
