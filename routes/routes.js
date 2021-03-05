@@ -9,9 +9,10 @@ const pondController = require("../controller/pondController");
 //     res.json(req.user);
 // });
 
-// router.post("/api/signup", function (req, res) {
-//     console.log("Username:", req.body.username);
-// });
+router.post("/api/signup", function (req, res) {
+    console.log("Username:", req.body.username);
+    pondController.create;
+});
 
 // bottom-most, default route. If no other routes are hit --> send React app
 router.use(function (req, res) {

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import API from "../../utils/API";
 import "./style.css";
 
 function SignUpForm() {
@@ -18,6 +19,10 @@ function SignUpForm() {
   function handleFormSubmit(event) {
     event.preventDefault();
     console.log('sign-up-form, username:', formObject.username);
+    API.saveUser({
+      username: formObject.username,
+      password: formObject.password
+    });
   }
 
   return (
