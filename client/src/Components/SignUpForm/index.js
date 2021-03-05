@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./style.css";
 
 function SignUpForm() {
+  const [formObject, setFormObject] = useState({
+    username: '',
+    password: ''
+  });
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    var obj = {};
+    obj[name] = value;
+    setFormObject({ ...formObject, [name]: value });
+  };
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log('sign-up-form, username:', formObject.username);
+  }
+
   return (
     <div class="wrapper fadeInDownSignUp">
       <div class="signup-form">
@@ -12,10 +29,12 @@ function SignUpForm() {
             Create your account. It's free and only takes a minute.
           </p>
           <div class="form-group">
-           
+
           </div>
           <div class="form-group">
             <input
+              value={formObject.username}
+              onChange={handleInputChange}
               type="username"
               class="form-control"
               name="username"
@@ -28,6 +47,8 @@ function SignUpForm() {
           </div>
           <div class="form-group">
             <input
+              value={formObject.password}
+              onChange={handleInputChange}
               type="password"
               class="form-control"
               name="password"
@@ -50,9 +71,9 @@ function SignUpForm() {
               autocomplete="off"
             />
           </div>
-      
+
           <div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block">
+            <button disabled={!(formObject.username && formObject.password)} onClick={handleFormSubmit} type="submit" class="btn btn-success btn-lg btn-block">
               Register Now
             </button>
           </div>

@@ -3,10 +3,7 @@ const session = require("express-session");
 const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes/routes");
-// const passport = require("./config/passport");
-const passportLocalMongoose = require('passport-local-mongoose'); 
-// can likely get rid of passportLocalMongoose above here as long as I require it properly in passport.js
-// guide here: https://www.sitepoint.com/local-authentication-using-passport-node-js/
+const passport = require("./config/passport");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -20,9 +17,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Initializing session to keep track of user's login session
-// app.use(session({ secret: "podypondy", resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({ secret: "podypondy", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use(routes);

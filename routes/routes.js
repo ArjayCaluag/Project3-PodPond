@@ -5,9 +5,13 @@ const pondController = require("../controller/pondController");
 // see guide https://www.sitepoint.com/local-authentication-using-passport-node-js/
 // if you want to use connect-ensure-login package as middleware to ensure user is logged in. Can probably just use config/middleware/isAuthenticated.js instead like in project 2.
 
-app.post("/api/login", passport.authenticate("local"), function (req, res) {
-    res.json(req.user);
-});
+// router.post("/api/login", passport.authenticate("local"), function (req, res) {
+//     res.json(req.user);
+// });
+
+// router.post("/api/signup", function (req, res) {
+//     console.log("Username:", req.body.username);
+// });
 
 // bottom-most, default route. If no other routes are hit --> send React app
 router.use(function (req, res) {
