@@ -11,6 +11,7 @@ import PodCastCard from "./Components/PodcastCard";
 import SearchBar from "./Components/SearchBar";
 import CommentSection from "./Components/Comments";
 import "./App.css";
+import LoginForm from "./Components/LoginForm";
 
 class App extends Component {
   constructor() {
@@ -121,6 +122,7 @@ class App extends Component {
         <Router>
           <NavBar />
           <Jumbotron />
+          <LoginForm/>
           <SearchBar />
           <PodCastCard />
           <CommentSection />
