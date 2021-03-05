@@ -16,6 +16,7 @@ import SignUpForm from "./Components/SignUpForm";
 import LandingPage from "./pages/LandingPage";
 import SearchPage from "./pages/SearchPage";
 import SavedPodcast from "./pages/SavedPodcast";
+import SignUpPage from "./pages/SignUpPage";
 
 class App extends Component {
   constructor() {
@@ -136,6 +137,7 @@ class App extends Component {
             <Route exact path="/" component ={LandingPage}/>
             <Route exact path="/search" component = {SearchPage} />
             <Route exact path="/mypond" component = {SavedPodcast}/>
+            <Route exact path="/signup" component = {SignUpPage} />
             <Route exact path="*" />
           </Switch>
         </Router>
