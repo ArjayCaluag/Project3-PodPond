@@ -16,9 +16,9 @@ function SignUpForm() {
           </div>
           <div class="form-group">
             <input
-              type="email"
+              type="username"
               class="form-control"
-              name="email"
+              name="username"
               placeholder="Username"
               required="required"
               data-fillr-id="1081205151"
