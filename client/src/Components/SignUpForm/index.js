@@ -38,18 +38,6 @@ function SignUpForm() {
               autocomplete="off"
             />
           </div>
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              name="confirm_password"
-              placeholder="Confirm Password"
-              required="required"
-              data-fillr-id="151220269"
-              data-fillr="bound"
-              autocomplete="off"
-            />
-          </div>
       
           <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg btn-block">
