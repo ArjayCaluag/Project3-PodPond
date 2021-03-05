@@ -6,10 +6,10 @@ import Player from "./utils/player";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
-import Jumbotron from "./Components/Jumbotron"
-import PodCastCard from "./Components/PodcastCard"
-import SearchBar from "./Components/SearchBar"
-import CommentSection from "./Components/Comments"
+import Jumbotron from "./Components/Jumbotron";
+import PodCastCard from "./Components/PodcastCard";
+import SearchBar from "./Components/SearchBar";
+import CommentSection from "./Components/Comments";
 import "./App.css";
 
 class App extends Component {
@@ -19,11 +19,11 @@ class App extends Component {
       token: null,
       item: {
         album: {
-          images: [{ url: "" }]
+          images: [{ url: "" }],
         },
         name: "",
         artists: [{ name: "" }],
-        duration_ms: 0
+        duration_ms: 0,
       },
       is_playing: "Paused",
       progress_ms: 0,
@@ -34,8 +34,6 @@ class App extends Component {
     this.tick = this.tick.bind(this);
   }
 
-
-
   componentDidMount() {
     // Set token
     let _token = hash.access_token;
@@ -43,7 +41,7 @@ class App extends Component {
     if (_token) {
       // Set token
       this.setState({
-        token: _token
+        token: _token,
       });
       this.getCurrentlyPlaying(_token);
     }
@@ -58,23 +56,22 @@ class App extends Component {
   }
 
   tick() {
-    if(this.state.token) {
+    if (this.state.token) {
       this.getCurrentlyPlaying(this.state.token);
     }
   }
-
 
   getCurrentlyPlaying(token) {
     // Make a call using the token
     $.ajax({
       url: "https://api.spotify.com/v1/me/player",
       type: "GET",
-      beforeSend: xhr => {
+      beforeSend: (xhr) => {
         xhr.setRequestHeader("Authorization", "Bearer " + token);
       },
-      success: data => {
+      success: (data) => {
         // Checks if the data is not empty
-        if(!data) {
+        if (!data) {
           this.setState({
             no_data: true,
           });
@@ -86,9 +83,9 @@ class App extends Component {
           is_playing: data.is_playing,
           progress_ms: data.progress_ms,
           no_data: false /* We need to "reset" the boolean, in case the
-                            user does not give F5 and has opened his Spotify. */
+                            user does not give F5 and has opened his Spotify. */,
         });
-      }
+      },
     });
   }
 
@@ -96,7 +93,6 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-         
           {!this.state.token && (
             <a
               className="btn btn--loginApp-link"
@@ -116,10 +112,25 @@ class App extends Component {
           )}
           {this.state.no_data && (
             <p>
-              You need to be playing a song on Spotify, for something to appear here.
+              You need to be playing a song on Spotify, for something to appear
+              here.
             </p>
           )}
         </header>
+
+        <Router>
+          <NavBar />
+          <Jumbotron />
+          <SearchBar />
+          <PodCastCard />
+          <CommentSection />
+
+          <Switch>
+            <Route exact path={["/search", "/"]} />
+            <Route exact path="/mypond" />
+            <Route exact path="*" />
+          </Switch>
+        </Router>
       </div>
     );
   }
