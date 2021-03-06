@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import * as $ from "jquery";
-import { authEndpoint, clientId, clientSecret, redirectUri, scopes } from "./utils/config";
+import {  scopes } from "./utils/config";
 import hash from "./utils/hash";
 import Player from "./utils/player";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Jumbotron from "./Components/Jumbotron";
@@ -12,10 +13,11 @@ import CommentSection from "./Components/Comments";
 import "./App.css";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
-import LandingPage from "./pages/LandingPage";
-import SearchPage from "./pages/SearchPage";
-import SavedPodcast from "./pages/SavedPodcast";
-import SignUpPage from "./pages/SignUpPage";
+
+
+const { REACT_APP_clientId } = process.env;
+console.log(REACT_APP_clientId)
+console.log(process.env)
 
 class App extends Component {
   constructor() {
@@ -98,16 +100,16 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {!this.state.token && (
-            <a
-              className="btn btn--loginApp-link"
-              href={`${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-                "%20"
-              )}&response_type=token&show_dialog=true`}
-            >
-              Login to Spotify
-            </a>
-          )}
+          {!this.state.token
+            && (
+              <a
+                type="button" className="btn btn--loginApp-link"
+                href={`${process.env.REACT_APP_authEndpoint}?client_id=${process.env.REACT_APP_clientId}&redirect_uri=${process.env.REACT_APP_redirectUri}&scope=${scopes.join(
+                  "%20"
+                )}&response_type=token&show_dialog=true`}
+              >
+                Login to Spotify
+              </a>)}
           {this.state.token && !this.state.no_data && (
             <Player
               item={this.state.item}
@@ -124,19 +126,17 @@ class App extends Component {
         </header>
 
         <Router>
-          
-          {/* <Jumbotron />
-          
+          <NavBar />
+          <Jumbotron />
+          <LoginForm/>
           <SignUpForm/>
           <SearchBar />
           <PodCastCard />
-          <CommentSection /> */}
+          <CommentSection />
 
           <Switch>
-            <Route exact path="/" component ={LandingPage}/>
-            <Route exact path="/search" component = {SearchPage} />
-            <Route exact path="/mypond" component = {SavedPodcast}/>
-            <Route exact path="/signup" component = {SignUpPage} />
+            <Route exact path={["/search", "/"]} />
+            <Route exact path="/mypond" />
             <Route exact path="*" />
           </Switch>
         </Router>
