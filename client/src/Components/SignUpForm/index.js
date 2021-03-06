@@ -28,8 +28,8 @@ function SignUpForm() {
       // console.log(res);
       if (res.data) {
         console.log("Successful signup");
-        // update history.push React Route destination. Currently "/" directs to the login page. We can use this (and an equivalent on login page) to force the user towards the spotify login
-        history.push("/");
+        // update history.push React Route destination. Currently "/mypond" directs to the SavedPodcast page. We can use this (and an equivalent on login page) to force the user towards the spotify login
+        history.push("/mypond");
       } else {
         console.log("Signup error");
       }
@@ -58,7 +58,7 @@ function SignUpForm() {
               required="required"
               data-fillr-id="1081205151"
               data-fillr="bound"
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <div className="form-group">
@@ -72,7 +72,7 @@ function SignUpForm() {
               required="required"
               data-fillr-id="938218994"
               data-fillr="bound"
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
       
