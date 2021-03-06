@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as $ from "jquery";
-import { scopes } from "./utils/config";
+import { scopes } from "../../utils/config";
 import hash from "../../utils/hash"
 import Player from "../../utils/player"
 import "./style.css";
