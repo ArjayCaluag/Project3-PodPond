@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as $ from "jquery";
-import { authEndpoint, clientId, redirectUri, scopes } from "./utils/config";
+import {  scopes } from "./utils/config";
 import hash from "./utils/hash";
 import Player from "./utils/player";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -19,6 +19,7 @@ import SavedPodcast from "./pages/SavedPodcast";
 import SignUpPage from "./pages/SignUpPage";
 
 
+
 function App() {
   return (
     <Router>
@@ -31,6 +32,9 @@ function App() {
       </Switch>
     </Router>
   );
+
+
+
 }
 
 export default App;
