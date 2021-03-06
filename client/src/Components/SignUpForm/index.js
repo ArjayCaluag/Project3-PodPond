@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
 
@@ -8,6 +8,8 @@ function SignUpForm() {
     username: '',
     password: ''
   });
+  // history will be used to redirect to the next page after the user has registered
+  let history = useHistory();
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -18,11 +20,20 @@ function SignUpForm() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log('sign-up-form, username:', formObject.username);
-    API.saveUser({
+    API.registerUser({
       username: formObject.username,
       password: formObject.password
-    });
+    })
+    .then(res => {
+      console.log(res);
+      if (res.data) {
+        console.log("Successful signup");
+        // update history.push React Route destination. Currently "/" directs to the login page
+        history.push("/");
+      } else {
+        console.log("Signup error");
+      }
+    }).catch(err => console.log("Signup server error:", err));
   }
 
   return (

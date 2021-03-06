@@ -2,8 +2,8 @@ const db = require("../models");
 
 // Methods to export
 module.exports = {
-  create: function (req, res) {
-    console.log("create user function hit");
+  register: function (req, res) {
+    console.log("Registering User:", req.body.username);
     db.User
       .create(req.body)
       .then(dbModel => res.json(dbModel))
