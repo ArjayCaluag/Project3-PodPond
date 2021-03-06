@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as $ from "jquery";
-import { authEndpoint, clientId, redirectUri, scopes } from "./utils/config";
+import {  scopes } from "./utils/config";
 import hash from "./utils/hash";
 import Player from "./utils/player";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -20,6 +20,7 @@ import SignUpPage from "./pages/SignUpPage";
 import SpotifyPage from "./pages/SpotifyPage";
 
 
+
 function App() {
   return (
     <Router>
@@ -33,6 +34,9 @@ function App() {
       </Switch>
     </Router>
   );
+
+
+
 }
 
 export default App;
