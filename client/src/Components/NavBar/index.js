@@ -22,7 +22,7 @@ function NavBar() {
             </Link>
         </li>
         <li className="nav-item">
-          <Link to="/spotifylogin" className="nav-link">
+          <Link to="/loginspotify" className="nav-link">
             Log in to Spotify
             </Link>
         </li>
