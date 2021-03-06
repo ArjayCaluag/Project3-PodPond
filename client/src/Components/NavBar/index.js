@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import SpotifyComponent from "../SpotifyComponent"
 
 function NavBar() {
   return (
@@ -20,6 +21,7 @@ function NavBar() {
             My Pond
             </Link>
         </li>
+        <li className="nav-item"></li>
       </ul>
     </nav>
   );
