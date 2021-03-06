@@ -13,6 +13,10 @@ import CommentSection from "./Components/Comments";
 import "./App.css";
 import LoginForm from "./Components/LoginForm";
 import SignUpForm from "./Components/SignUpForm";
+import LandingPage from "./pages/LandingPage";
+import SearchPage from "./pages/SearchPage";
+import SavedPodcast from "./pages/SavedPodcast";
+import SignUpPage from "./pages/SignUpPage";
 
 
 const { REACT_APP_clientId } = process.env;
@@ -103,7 +107,7 @@ class App extends Component {
           {!this.state.token
             && (
               <a
-                type="button" className="btn btn--loginApp-link"
+                className="btn btn--loginApp-link"
                 href={`${process.env.REACT_APP_authEndpoint}?client_id=${process.env.REACT_APP_clientId}&redirect_uri=${process.env.REACT_APP_redirectUri}&scope=${scopes.join(
                   "%20"
                 )}&response_type=token&show_dialog=true`}
