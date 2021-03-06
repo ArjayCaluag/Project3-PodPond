@@ -21,7 +21,12 @@ function NavBar() {
             My Pond
             </Link>
         </li>
-        <li className="nav-item"></li>
+        <li className="nav-item">
+          <Link to="/spotifylogin" className="nav-link">
+            Log in to Spotify
+            </Link>
+        </li>
+
       </ul>
     </nav>
   );
