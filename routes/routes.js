@@ -11,7 +11,8 @@ const pondController = require("../controller/pondController");
 
 router.post("/api/signup", function (req, res) {
     console.log("Username:", req.body.username);
-    pondController.create;
+    console.log("Pass:", req.body.password);
+    pondController.create(req, res);
 });
 
 // bottom-most, default route. If no other routes are hit --> send React app
