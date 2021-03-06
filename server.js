@@ -1,10 +1,12 @@
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
+const mongoose = require("mongoose");
+const routes = require("./routes/routes");
+const passport = require("./config/passport");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
-const mongoose = require("mongoose");
-// const routes = require("./routes");
-
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -14,10 +16,16 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Routes
-// app.use(routes);
+// Initializing session to keep track of user's login session
+app.use(session({ secret: "podypondy", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/podpond");
+// Routes
+app.use(routes);
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/podpond", 
+{ useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
