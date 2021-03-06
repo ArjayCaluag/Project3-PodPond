@@ -25,10 +25,10 @@ function SignUpForm() {
       password: formObject.password
     })
     .then(res => {
-      console.log(res);
+      // console.log(res);
       if (res.data) {
         console.log("Successful signup");
-        // update history.push React Route destination. Currently "/" directs to the login page
+        // update history.push React Route destination. Currently "/" directs to the login page. We can use this (and an equivalent on login page) to force the user towards the spotify login
         history.push("/");
       } else {
         console.log("Signup error");
@@ -37,22 +37,22 @@ function SignUpForm() {
   }
 
   return (
-    <div class="wrapper fadeInDownSignUp">
-      <div class="signup-form">
+    <div className="wrapper fadeInDownSignUp">
+      <div className="signup-form">
         <form action="/examples/actions/confirmation.php" method="post">
           <h2>Register</h2>
-          <p class="hint-text">
-            Create your account. It's free and only takes a minute.
+          <p className="hint-text">
+            Create your account. It's fast and free!
           </p>
-          <div class="form-group">
+          <div className="form-group">
 
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               value={formObject.username}
               onChange={handleInputChange}
               type="username"
-              class="form-control"
+              className="form-control"
               name="username"
               placeholder="Username"
               required="required"
@@ -61,12 +61,12 @@ function SignUpForm() {
               autocomplete="off"
             />
           </div>
-          <div class="form-group">
+          <div className="form-group">
             <input
               value={formObject.password}
               onChange={handleInputChange}
               type="password"
-              class="form-control"
+              className="form-control"
               name="password"
               placeholder="Password"
               required="required"
@@ -76,14 +76,14 @@ function SignUpForm() {
             />
           </div>
       
-          <div class="form-group">
-            <button disabled={!(formObject.username && formObject.password)} onClick={handleFormSubmit} type="submit" class="btn btn-success btn-lg btn-block">
+          <div className="form-group">
+            <button disabled={!(formObject.username && formObject.password)} onClick={handleFormSubmit} type="submit" className="btn btn-success btn-lg btn-block">
               Register Now
             </button>
           </div>
         </form>
 
-        <div class="text-center">
+        <div className="text-center">
           Already have an account? <Link to = "/" >Sign in</Link>
         </div>
       </div>
