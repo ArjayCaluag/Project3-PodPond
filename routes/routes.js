@@ -22,8 +22,8 @@ router.get("/logout", function (req, res) {
 });
 
 // bottom-most, default route. If no other routes are hit --> send React app
-router.use(function (req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// router.use(function (req, res) {
+//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = router;

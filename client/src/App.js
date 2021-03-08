@@ -29,7 +29,7 @@ function App() {
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/mypond" component={SavedPodcast} />
         <Route exact path="/signup" component={SignUpPage} />
-        <Route exact path="/spotify" component={SpotifyComponent} />
+        <Route exact path={["/spotify", "/redirect"]} component={SpotifyComponent} />
         <Route exact path="*" />
       </Switch>
     </Router>
