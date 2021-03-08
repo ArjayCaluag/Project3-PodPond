@@ -8,7 +8,7 @@ function LoginForm() {
     username: '',
     password: ''
   });
-  // history will be used to redirect to the next page after the user has registered
+  // history will be used to redirect to the next page after the user has registered, and is assigned to the userHistory hook
   let history = useHistory();
 
   function handleInputChange(event) {

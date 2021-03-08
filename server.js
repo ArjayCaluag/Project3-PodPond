@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Initializing session to keep track of user's login session
-app.use(session({ secret: "podypondy", resave: true, saveUninitialized: true }));
+app.use(session({ secret: "podypondy", resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -27,9 +27,9 @@ app.use(routes);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/podpond", 
 { useNewUrlParser: true, useUnifiedTopology: true });
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

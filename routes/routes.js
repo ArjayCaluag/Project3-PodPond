@@ -8,6 +8,7 @@ const passport = require("../config/passport");
 // Calls methods from pondController
 
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
+    console.log("req.user in routes:", req.user);
     res.json(req.user);
 });
 
@@ -19,7 +20,7 @@ router.post("/api/signup", function (req, res) {
 router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-    // will res.redirect work alongside React?
+    // will res.redirect work alongside React? It will not...
 });
 
 // saved podcast routes
@@ -47,8 +48,8 @@ router.route("/api/podcasts/comments")
 
 
 // bottom-most, default route. If no other routes are hit --> send React app
-router.use(function (req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// router.use(function (req, res) {
+//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = router;
