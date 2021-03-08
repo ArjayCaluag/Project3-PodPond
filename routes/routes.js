@@ -18,7 +18,7 @@ router.post("/api/signup", function (req, res) {
 router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-    // will res.redirect work alongside React?
+    // will res.redirect work alongside React? It will not...
 });
 
 // bottom-most, default route. If no other routes are hit --> send React app
