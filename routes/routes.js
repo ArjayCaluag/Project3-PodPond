@@ -6,6 +6,7 @@ const passport = require("../config/passport");
 // if you want to use connect-ensure-login package as middleware to ensure user is logged in. Can probably just use config/middleware/isAuthenticated.js instead like in project 2.
 
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
+    console.log("req.user in routes:", req.user);
     res.json(req.user);
 });
 
@@ -21,8 +22,8 @@ router.get("/logout", function (req, res) {
 });
 
 // bottom-most, default route. If no other routes are hit --> send React app
-router.use(function (req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+// router.use(function (req, res) {
+//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// });
 
 module.exports = router;
