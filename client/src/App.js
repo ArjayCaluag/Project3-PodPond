@@ -1,29 +1,19 @@
-import React, { Component } from "react";
-import * as $ from "jquery";
-import {  scopes } from "./utils/config";
-import hash from "./utils/hash";
-import Player from "./utils/player";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
-import Jumbotron from "./Components/Jumbotron";
-import PodCastCard from "./Components/PodcastCard";
-import SearchBar from "./Components/SearchBar";
-import CommentSection from "./Components/Comments";
-import "./App.css";
-import LoginForm from "./Components/LoginForm";
-import SignUpForm from "./Components/SignUpForm";
 import LandingPage from "./pages/LandingPage";
 import SearchPage from "./pages/SearchPage";
 import SavedPodcast from "./pages/SavedPodcast";
 import SignUpPage from "./pages/SignUpPage";
 import SpotifyPage from "./pages/SpotifyPage";
 
-
-
 function App() {
+  const [userObject, setUserObject] = useState({});
+  
   return (
     <Router>
+      <NavBar />
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/search" component={SearchPage} />
