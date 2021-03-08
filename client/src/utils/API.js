@@ -11,9 +11,9 @@ export default {
         return axios.post("/api/login", userData);
     },
     
-    getPodcasts: function(){
-        return axios.get("/api/podcasts")
-    },
+    // getPodcasts: function(){
+    //     return axios.get("/api/podcasts")
+    // },
 
     savePodcast: function (podcastData){
         return axios.post ("/api/savedpodcasts", podcastData)
@@ -26,5 +26,9 @@ export default {
     queryPodcast: function (query){
         console.log(query);
         return axios.get("api/podcasts/search", {params: {q:query}});
+    },
+
+    comments: function(){
+        return axios.post("api/podcasts/comments")
     }
 }

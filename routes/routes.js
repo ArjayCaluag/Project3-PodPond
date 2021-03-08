@@ -29,9 +29,14 @@ router.route("/api/savedpodcasts")
 
 // router.route("/api/podcasts")
   
+// delete from saved podcast
 // "/api/podcasts/:id"
 router.route("/:id")
     .delete(pondController.remove);
+
+router.route("/api/podcasts/comments")
+    .post(pondController.newComment)
+    .get(pondController.showComments)
 
 
 

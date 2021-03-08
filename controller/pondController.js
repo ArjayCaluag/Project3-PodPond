@@ -12,12 +12,12 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  create: function(req,res){
+  saveNewPodcast: function(req,res){
     db.Podcast
     .create(req.body)
     .then (dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err))
-  }
+  },
 
   //Showcase Saved podcast
   savedPodcast: function (req,res) {
@@ -40,5 +40,19 @@ module.exports = {
     .then(dbModel => dbModel.remove())
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status (422).json(err));
+  },
+
+  newComment: function (req,res){
+    db.Comment
+      .create(req.body)
+      .then (dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err))
+  },
+
+  showComments : function (req,res){
+    db.Comment
+    .findAll()
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   }
 };
