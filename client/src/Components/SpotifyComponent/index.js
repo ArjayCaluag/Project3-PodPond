@@ -5,6 +5,7 @@ import hash from "../../utils/hash"
 import Player from "../../utils/player"
 import NavBar from "../../Components/NavBar"
 import "./style.css";
+import axios from "axios";
 
 function SpotifyComponent() {
   const [token, setToken] = useState("");
@@ -19,26 +20,7 @@ function SpotifyComponent() {
   const [noData, setNoData] = useState(false);
   const [is_playing, set_is_playing] = useState(false);
   const [progress, setProgress] = useState(0);
-
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     token: null,
-  //     item: {
-  //       album: {
-  //         images: [{ url: "" }],
-  //       },
-  //       name: "",
-  //       artists: [{ name: "" }],
-  //       duration_ms: 0,
-  //     },
-  //     is_playing: "Paused",
-  //     progress_ms: 0,
-  //     no_data: false,
-  //   };
-
-  tick();
-
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     // Set token
@@ -60,13 +42,8 @@ function SpotifyComponent() {
       //clears interval on component unmount
     }
   })
-  // componentWillUnmount() {
-  //    // clear the interval to save resources
-  //    clearInterval(this.interval);
-  // }
 
   function tick() {
-    console.log("tick function entered")
     console.log("token: ", token)
     console.log("item: ", item)
     if (token) {
@@ -74,30 +51,44 @@ function SpotifyComponent() {
     }
   }
 
+  function handleInputChange(event) {
+    const { value } = event.target;
+    console.log(value)
+    setSearch(value)
+  }
+
+  function spotSearch(event) {
+    event.preventDefault();
+    console.log("search: ", search)
+  }
+
   function getCurrentlyPlaying(token) {
     // Make a call using the token
     console.log("call made")
 
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: (data) => {
+    axios.get(
+      "https://api.spotify.com/v1/me/player",
+      {
+        headers: {
+          "Authorization": "Bearer" + token
+        }
+      }
+    )
+      .then((response) => {
         // Checks if the data is not empty
-        if (!data) {
+        if (!response) {
           setNoData(true);
           return;
         }
-        console.log("data: ", data);
-        setItem(data.item)
-        set_is_playing(data.is_playing)
-        setProgress(data.progress_ms)
+        console.log("data: ", response);
+        setItem(response.item)
+        set_is_playing(response.is_playing)
+        setProgress(response.progress_ms)
         setNoData(false)
-      },
-    });
+        return;
+      });
   }
+
 
 
   return (
@@ -122,37 +113,38 @@ function SpotifyComponent() {
         </p>
       )}
       {!noData && (
-          <div className="card">
-        <img className="card-img-top" src={item.album.images[0].url} alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">Card title</h5>
-        </ div>
-          </div> )}
- 
-          {!token && (<a
-            className="btn btn-primary"
-            href={`${process.env.REACT_APP_authEndpoint}?client_id=${process.env.REACT_APP_clientId}&redirect_uri=${process.env.REACT_APP_redirectUri}&scope=${scopes.join(
-              "%20"
-            )}&response_type=token&show_dialog=true`}
-          >
+        <div className="card">
+          <img className="card-img-top" src={item.album.images[0].url} alt="Card image cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+          </ div>
+        </div>)}
+
+      {!token && (<a
+        className="btn btn-primary"
+        href={`${process.env.REACT_APP_authEndpoint}?client_id=${process.env.REACT_APP_clientId}&redirect_uri=${process.env.REACT_APP_redirectUri}&scope=${scopes.join(
+          "%20"
+        )}&response_type=token&show_dialog=true`}
+      >
         Login to Spotify
-          </a>)}
-     
- 
+      </a>)}
+
+
       <div className="card mb-5 d-block mx-auto" id="searchbar">
-        <div className="input-group">
+        <form className="input-group" onSubmit={ spotSearch}>
           <input
             type="search"
             className="form-control rounded"
             placeholder="Search"
             aria-label="Search"
             aria-describedby="search-addon"
-
+            value={search}
+            onChange={handleInputChange}
           />
           <button type="button" className="btn btn-outline-primary" >
-          Search
+            Search
         </button>
-        </div>
+        </form >
       </div>
     </div >
   );
