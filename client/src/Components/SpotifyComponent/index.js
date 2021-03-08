@@ -53,7 +53,7 @@ function SpotifyComponent() {
     }
 
     // set interval for polling every 5 seconds
-    const interval = setInterval(() => { tick(); console.log("tick") }, 5000);
+    const interval = setInterval(() => { tick(); console.log("tick") }, 10000);
 
     return () => {
       clearInterval(interval);
@@ -66,6 +66,9 @@ function SpotifyComponent() {
   // }
 
   function tick() {
+    console.log("tick function entered")
+    console.log("token: ", token)
+    console.log("item: ", item)
     if (token) {
       getCurrentlyPlaying(token);
     }
@@ -73,6 +76,8 @@ function SpotifyComponent() {
 
   function getCurrentlyPlaying(token) {
     // Make a call using the token
+    console.log("call made")
+
     $.ajax({
       url: "https://api.spotify.com/v1/me/player",
       type: "GET",
@@ -85,7 +90,7 @@ function SpotifyComponent() {
           setNoData(true);
           return;
         }
-        console.log(data);
+        console.log("data: ", data);
         setItem(data.item)
         set_is_playing(data.is_playing)
         setProgress(data.progress_ms)
@@ -107,28 +112,33 @@ function SpotifyComponent() {
             progress_ms={progress}
           />
         )} */}
-        {noData && (
-          <p>
-            You need to be playing a song on Spotify, for something to appear
-            here.
-          </p>
-        )}
+
       </header>
-      <div className="card">
-        <img className="card-img-top" src={item.album.images} alt="Card image cap" />
+
+      {noData && (
+        <p>
+          You need to be playing a song on Spotify, for something to appear
+          here.
+        </p>
+      )}
+      {!noData && (
+          <div className="card">
+        <img className="card-img-top" src={item.album.images[0].url} alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">Card title</h5>
-          <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </ div>
+          </div> )}
+ 
           {!token && (<a
             className="btn btn-primary"
             href={`${process.env.REACT_APP_authEndpoint}?client_id=${process.env.REACT_APP_clientId}&redirect_uri=${process.env.REACT_APP_redirectUri}&scope=${scopes.join(
               "%20"
             )}&response_type=token&show_dialog=true`}
           >
-            Login to Spotify
+        Login to Spotify
           </a>)}
-        </div>
-      </div>
+     
+ 
       <div className="card mb-5 d-block mx-auto" id="searchbar">
         <div className="input-group">
           <input
@@ -140,11 +150,11 @@ function SpotifyComponent() {
 
           />
           <button type="button" className="btn btn-outline-primary" >
-            Search
+          Search
         </button>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 export default SpotifyComponent;
