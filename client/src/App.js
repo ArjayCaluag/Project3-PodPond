@@ -16,10 +16,10 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
-        <Route exact path="/search" component={SearchPage} render={(props) => <SearchPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
-        <Route exact path="/mypond" component={SavedPodcast} />
-        <Route exact path="/signup" component={SignUpPage} />
-        <Route exact path="/loginspotify" component={SpotifyPage} />
+        <Route exact path="/search" render={(props) => <SearchPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
+        <Route exact path="/mypond" render={(props) => <SavedPodcast {...props} userObject={userObject} setUserObject={setUserObject} />}/>
+        <Route exact path="/signup" render={(props) => <SignUpPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
+        <Route exact path="/loginspotify" render={(props) => <SpotifyPage {...props} userObject={userObject} setUserObject={setUserObject} />}/>
         <Route exact path="*" />
       </Switch>
     </Router>

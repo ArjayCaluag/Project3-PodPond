@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "../../Components/NavBar";
 import Jumbotron from "../../Components/Jumbotron";
 import SearchBar from "../../Components/SearchBar";
 import PodCastCard from "../../Components/PodcastCard";
 
-function SearchPage() {
+function SearchPage(props) {
+
   return (
     <div>
       <Jumbotron/>

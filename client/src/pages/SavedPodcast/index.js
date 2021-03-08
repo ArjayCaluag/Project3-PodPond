@@ -1,9 +1,8 @@
 import React from "react";
 import Jumbotron from "../../Components/Jumbotron";
-import NavBar from "../../Components/NavBar";
 import PodCastCard from "../../Components/PodcastCard";
 
-function SavedPodcast() {
+function SavedPodcast(props) {
   return (
     <div>
       <Jumbotron/>

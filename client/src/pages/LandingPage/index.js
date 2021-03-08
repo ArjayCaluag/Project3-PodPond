@@ -1,9 +1,8 @@
 import React from "react";
-import NavBar from "../../Components/NavBar";
 import LoginForm from "../../Components/LoginForm";
 
 function LandingPage(props) {
-  console.log("Props loading on LandingPage:", props);
+  // console.log("Props loading on LandingPage:", props);
   
   return (
     <div>

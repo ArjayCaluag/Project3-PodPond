@@ -34,6 +34,7 @@ function LoginForm(props) {
             username: res.data.username,
             saved: res.data.saved
           }
+          // Line below updates userObject stateful variable in App.js, which we then use to pass the userObject to each page
           props.setUserObject(userObj);
           history.push("/mypond");
         } else {
