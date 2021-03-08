@@ -2,10 +2,11 @@ const router = require("express").Router();
 const path = require("path");
 const pondController = require("../controller/pondController");
 const passport = require("../config/passport");
+
 // see guide https://www.sitepoint.com/local-authentication-using-passport-node-js/
 // if you want to use connect-ensure-login package as middleware to ensure user is logged in. Can probably just use config/middleware/isAuthenticated.js instead like in project 2.
 
-router.post("/api/login", passport.authenticate("local"), function (req, res) {
+router.post("/api/login", passport.authenticate('local'), function (req, res) {
     res.json(req.user);
 });
 

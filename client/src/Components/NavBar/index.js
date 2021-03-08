@@ -6,8 +6,8 @@ import SpotifyComponent from "../SpotifyComponent"
 function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <Link to="/search" 
-      className="navbar-brand">
+      <Link to="/search"
+        className="navbar-brand">
         Pod Pond
       </Link>
       <ul className="navbar-nav">
@@ -21,7 +21,11 @@ function NavBar() {
             My Pond
             </Link>
         </li>
-        <li className="nav-item"></li>
+        <li className="nav-item">
+          <Link to="/spotify" className="nav-link">
+            Spotify
+             </Link>
+        </li>
       </ul>
     </nav>
   );

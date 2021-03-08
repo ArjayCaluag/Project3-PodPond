@@ -1,33 +1,44 @@
 import React, { Component } from "react";
 import * as $ from "jquery";
-import { authEndpoint, clientId, redirectUri, scopes } from "../../utils/config";
+import { scopes } from "../../utils/config";
 import hash from "../../utils/hash"
 import Player from "../../utils/player"
 import "./style.css";
 
-class SpotifyComponent extends Component {
-  constructor() {
-    super();
-    this.state = {
-      token: null,
-      item: {
-        album: {
-          images: [{ url: "" }],
-        },
-        name: "",
-        artists: [{ name: "" }],
-        duration_ms: 0,
+function SpotifyComponent(){
+  const [token, setToken] = useState("");
+  const [item, setItem] = useState({
+      album: {
+        images: [{ url: "" }],
       },
-      is_playing: "Paused",
-      progress_ms: 0,
-      no_data: false,
-    };
+      name: "",
+      artists: [{ name: "" }],
+      duration_ms: 0,
+  })
+  const [noData, setNoData] = useState(false);
+
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     token: null,
+  //     item: {
+  //       album: {
+  //         images: [{ url: "" }],
+  //       },
+  //       name: "",
+  //       artists: [{ name: "" }],
+  //       duration_ms: 0,
+  //     },
+  //     is_playing: "Paused",
+  //     progress_ms: 0,
+  //     no_data: false,
+  //   };
 
     this.getCurrentlyPlaying = this.getCurrentlyPlaying.bind(this);
     this.tick = this.tick.bind(this);
   }
 
-  componentDidMount() {
+  useEffect(() => {
     // Set token
     let _token = hash.access_token;
 
@@ -41,11 +52,15 @@ class SpotifyComponent extends Component {
 
     // set interval for polling every 5 seconds
     this.interval = setInterval(() => this.tick(), 5000);
-  }
 
+    return () => {
+      clearInterval(this.interval);
+      //clears interval on component unmount
+    }
+  })
   componentWillUnmount() {
     // clear the interval to save resources
-    clearInterval(this.interval);
+    
   }
 
   tick() {
@@ -110,6 +125,29 @@ class SpotifyComponent extends Component {
             </p>
           )}
         </header>
+        <div className="card" style="width: 18rem;">
+          <img className="card-img-top" src="..." alt="Card image cap" />
+          <div className="card-body">
+            <h5 className="card-title">Card title</h5>
+            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" className="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+        <div className="card mb-5 d-block mx-auto" id="searchbar">
+          <div className="input-group">
+            <input
+              type="search"
+              className="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+
+            />
+            <button type="button" className="btn btn-outline-primary" >
+              Search
+        </button>
+          </div>
+        </div>
       </div>
     );
   }
