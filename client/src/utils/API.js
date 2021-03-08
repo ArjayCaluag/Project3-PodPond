@@ -1,4 +1,5 @@
 import axios from "axios";
+// Frontend API Calls
 
 export default {
 
@@ -15,7 +16,7 @@ export default {
     },
 
     savePodcast: function (podcastData){
-        return axios.post ("/api/podcasts", podcastData)
+        return axios.post ("/api/savedpodcasts", podcastData)
     },
 
     deletePodcast: function (id){
