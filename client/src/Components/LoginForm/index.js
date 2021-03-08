@@ -32,7 +32,8 @@ function LoginForm(props) {
           let userObj = {
             _id: res.data._id,
             username: res.data.username,
-            saved: res.data.saved
+            saved: res.data.saved,
+            loggedIn: true
           }
           // Line below updates userObject stateful variable in App.js, which we then use to pass the userObject to each page
           props.setUserObject(userObj);
