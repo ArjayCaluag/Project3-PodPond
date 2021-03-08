@@ -21,6 +21,7 @@ function App() {
         <Route exact path="*" />
       </Switch>
     </Router>
+    
   );
 }
 

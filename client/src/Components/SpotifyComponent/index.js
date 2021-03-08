@@ -6,6 +6,8 @@ import Player from "../../utils/player"
 import NavBar from "../../Components/NavBar"
 import "./style.css";
 import axios from "axios";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 function SpotifyComponent() {
   const [token, setToken] = useState("");
@@ -58,10 +60,16 @@ function SpotifyComponent() {
   }
 
   function spotSearch(event) {
-    event.preventDefault();
-    console.log("search: ", search)
+    axios.get(
+      "https://api.spotify.com/v1/search",
+      {
+        headers: {
+          "Authorization": "Bearer" + token
+        }
+      }
+    )
   }
-
+  //curl -X "GET" "https://api.spotify.com/v1/search?q=SEARCHQUERY&type=podcast&limit=10" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer BQCw_h2hbUG4QgSLR6BzlQDTqX9q3iePZCp5MVjCk4donbNygem56Vg2Lc0zJlKx9NjZEu3eaYu7_gF8xPXPQDsa1xg8POKRoBDAzU71xmTEPIyTYd89ZWJrekXRaSIKJ8DH2jdq5GBGLznOgY0MLg"
   function getCurrentlyPlaying(token) {
     // Make a call using the token
     console.log("call made")
@@ -131,7 +139,7 @@ function SpotifyComponent() {
 
 
       <div className="card mb-5 d-block mx-auto" id="searchbar">
-        <form className="input-group" onSubmit={ spotSearch}>
+        <form className="input-group" onSubmit={spotSearch}>
           <input
             type="search"
             className="form-control rounded"
@@ -144,9 +152,15 @@ function SpotifyComponent() {
           <button type="button" className="btn btn-outline-primary" >
             Search
         </button>
+          <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+          </DropdownButton>
         </form >
       </div>
     </div >
   );
 }
+
 export default SpotifyComponent;
