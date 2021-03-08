@@ -6,7 +6,6 @@ import PodCastCard from "../../Components/PodcastCard";
 function SavedPodcast() {
   return (
     <div>
-      <NavBar />
       <Jumbotron/>
       <h1> View your saved podcast below!</h1>
       <PodCastCard/>

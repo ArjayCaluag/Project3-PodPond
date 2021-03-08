@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
 
-function LoginForm() {
+function LoginForm(props) {
+  
   const [formObject, setFormObject] = useState({
     username: '',
     password: ''
@@ -25,9 +26,15 @@ function LoginForm() {
       password: formObject.password
     })
       .then(res => {
-        console.log(res);
+        console.log("Response received after login:", res);
         if (res.status === 200) {
           console.log("Successful login");
+          let userObj = {
+            _id: res.data._id,
+            username: res.data.username,
+            saved: res.data.saved
+          }
+          props.setUserObject(userObj);
           history.push("/mypond");
         } else {
           console.log("Login error");

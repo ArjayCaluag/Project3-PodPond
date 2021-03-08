@@ -5,7 +5,6 @@ import SignUpForm from "../../Components/SignUpForm";
 function SignUpPage() {
   return (
     <div>
-      <NavBar />
       <SignUpForm/>
     </div>
   );

@@ -7,7 +7,6 @@ import PodCastCard from "../../Components/PodcastCard";
 function SearchPage() {
   return (
     <div>
-      <NavBar />
       <Jumbotron/>
       <SearchBar/>
       <PodCastCard/>

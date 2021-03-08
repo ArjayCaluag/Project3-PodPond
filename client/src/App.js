@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
@@ -10,16 +10,16 @@ import SpotifyPage from "./pages/SpotifyPage";
 
 function App() {
   const [userObject, setUserObject] = useState({});
-  
+
   return (
     <Router>
       <NavBar />
       <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/search" component={SearchPage} />
+        <Route exact path="/" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
+        <Route exact path="/search" component={SearchPage} render={(props) => <SearchPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
         <Route exact path="/mypond" component={SavedPodcast} />
         <Route exact path="/signup" component={SignUpPage} />
-        <Route exact path="/spotifylogin" component = {SpotifyPage} />
+        <Route exact path="/loginspotify" component={SpotifyPage} />
         <Route exact path="*" />
       </Switch>
     </Router>
