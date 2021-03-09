@@ -4,7 +4,7 @@ import "./style.css";
 
 function NavBar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark ">
       <Link to="/search"
         className="navbar-brand">
         Pod Pond
@@ -20,6 +20,7 @@ function NavBar(props) {
             My Pond
             </Link>
         </li>
+<<<<<<< HEAD
         <li className="nav-item">
           <Link to="/loginspotify" className="nav-link">
             Log in to Spotify
@@ -31,6 +32,8 @@ function NavBar(props) {
           </li>
           : null
         }
+=======
+>>>>>>> ceda059493916ea877620ac9906cd128cc537cf9
       </ul>
     </nav>
   );
