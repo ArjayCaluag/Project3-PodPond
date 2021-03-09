@@ -21,8 +21,8 @@ function SignUpForm() {
   function handleFormSubmit(event) {
     event.preventDefault();
     API.registerUser({
-      username: formObject.username,
-      password: formObject.password
+      username: formObject.username.trim(),
+      password: formObject.password.trim()
     })
     .then(res => {
       // console.log(res);

@@ -22,8 +22,8 @@ function LoginForm(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     API.loginUser({
-      username: formObject.username,
-      password: formObject.password
+      username: formObject.username.trim(),
+      password: formObject.password.trim()
     })
       .then(res => {
         console.log("Response received after login:", res);

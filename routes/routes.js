@@ -24,7 +24,7 @@ router.get("/logout", function (req, res) {
 
 // saved podcast routes
 router.route("/api/savedpodcasts")
-    .get(pondController.savedPodcast)
+    .get(pondController.savedPodcasts)
     .post(pondController.saveNewPodcast)
 
 // router.route("/api/podcasts")
