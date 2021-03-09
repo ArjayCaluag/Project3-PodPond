@@ -15,7 +15,7 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
+      <NavBar userObject={userObject} />
       <Switch>
         <Route exact path="/" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
         <Route exact path="/signup" render={(props) => <SignUpPage {...props} userObject={userObject} setUserObject={setUserObject} />} />

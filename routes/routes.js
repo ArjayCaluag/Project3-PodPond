@@ -20,7 +20,6 @@ router.post("/api/signup", function (req, res) {
 router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-    // will res.redirect work alongside React? It will not... maybe redirect to root route via URL rather than "/"?
 });
 
 // saved podcast routes

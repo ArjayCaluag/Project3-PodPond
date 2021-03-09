@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-function NavBar() {
+function NavBar(props) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/search"
-      className="navbar-brand">
+        className="navbar-brand">
         Pod Pond
       </Link>
       <ul className="navbar-nav">
@@ -25,7 +25,12 @@ function NavBar() {
             Log in to Spotify
             </Link>
         </li>
-
+        {props.userObject.loggedIn ?
+          <li className="nav-item">
+            <a href="/logout">Logout</a>
+          </li>
+          : null
+        }
       </ul>
     </nav>
   );
