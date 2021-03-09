@@ -45,7 +45,7 @@ function LoginForm(props) {
   }
 
   return (
-    <div className="login">
+    <body className ="login">
       <div className="wrapper fadeInDownLogin">
         <div className="login-form">
           <form action="/examples/actions/confirmation.php" method="post">
@@ -97,7 +97,8 @@ function LoginForm(props) {
           </div>
         </div>
       </div>
-    </div>
+    </body>
+    
   );
 }
 
