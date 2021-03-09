@@ -27,7 +27,7 @@ function NavBar(props) {
         </li>
         {props.userObject.loggedIn ?
           <li className="nav-item">
-            <a href="/logout">Logout</a>
+            <a className="btn btn-success" href="/logout">Logout</a>
           </li>
           : null
         }
