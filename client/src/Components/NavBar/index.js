@@ -4,7 +4,7 @@ import "./style.css";
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark ">
       <Link to="/search"
       className="navbar-brand">
         Pod Pond
