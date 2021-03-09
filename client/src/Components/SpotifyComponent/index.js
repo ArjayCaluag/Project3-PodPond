@@ -106,13 +106,13 @@ function SpotifyComponent() {
   //     }
   //   }
   // )
-    // $.ajax({
-    //   url: "https://api.spotify.com/v1/me/player",
-    //   type: "GET",
-    //   beforeSend: (xhr) => {
-    //     xhr.setRequestHeader("Authorization", "Bearer " + token);
-    //   },
-    //   success: (response) => {
+    $.ajax({
+      url: "https://api.spotify.com/v1/me/player",
+      type: "GET",
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+      },
+      success: (response) => {
         // Checks if the data is not empty
         if (!response) {
           setNoData(true);
