@@ -59,7 +59,7 @@ function SpotifyComponent() {
   function spotSearch(event) {
     event.preventDefault();
     console.log("search: ", search)
-    let query = `https://api.spotify.com/v1/search?q=` + search + `&type=artist&limit=10`
+    let query = `https://api.spotify.com/v1/search?q=` + search + `&type=episode,show&limit=10`
     // axios.get(
     //   query,
     //   {
