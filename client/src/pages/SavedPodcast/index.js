@@ -10,7 +10,6 @@ function SavedPodcast(props) {
     return (
       <div>
       <MyPondJumbotron/>
-      <h1> View your saved podcast below!</h1>
       <PodCastCard/>
     </div>
     );

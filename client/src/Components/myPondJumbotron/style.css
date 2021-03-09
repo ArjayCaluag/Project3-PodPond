@@ -1,8 +1,17 @@
-.jumbotron{
-    
+.myPond{
+   
+    background-image : url(https://i.pinimg.com/originals/f8/b4/a6/f8b4a68d6b8a24b146f9a2539ea73f48.jpg);
+    background-repeat:no-repeat;
+    background-position:center;  
     text-align: center;
     font-weight: 700;
     min-height: 370px;
+    }
+
+  .pondh1, .pondp {
+        color: white;
+        font-family: fantasy;
+        font-size: 50px;
     }
     
     
