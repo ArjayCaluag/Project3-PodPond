@@ -4,7 +4,7 @@ import SignUpForm from "../../Components/SignUpForm";
 function SignUpPage(props) {
   return (
     <div>
-      <SignUpForm/>
+      <SignUpForm userObject={props.userObject} setUserObject={props.setUserObject} />
     </div>
   );
 }

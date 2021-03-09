@@ -13,22 +13,23 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
 
 router.post("/api/signup", function (req, res) {
     pondController.register(req, res);
+    // console.log("req.session:", req.session);
+    // console.log("req.user:", req.user);
 });
 
 // GET route for logout function
 router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-    // will res.redirect work alongside React? It will not... maybe redirect to root route via URL rather than "/"?
 });
 
 // saved podcast routes
 router.route("/api/savedpodcasts")
-    .get(pondController.savedPodcast)
+    .get(pondController.savedPodcasts)
     .post(pondController.saveNewPodcast)
 
 // router.route("/api/podcasts")
-  
+
 // delete from saved podcast
 // "/api/podcasts/:id"
 router.route("/:id")

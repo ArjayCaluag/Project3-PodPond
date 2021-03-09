@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Router>
-      {userObject.token && <NavBar />}
+      {userObject.loggedIn && <NavBar userObject={userObject} />}
       <Switch>
         <Route exact path="/" render={(props) => <SpotifyPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
         <Route exact path={["/login", "/redirect"]} render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />}/>
@@ -24,10 +24,9 @@ function App() {
         {/* Routes above are NOT protected by authentication, routes below WILL be protected by authentication. */}
         <Route exact path="/search" render={(props) => <SearchPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
         <Route exact path="/mypond" render={(props) => <SavedPodcast {...props} userObject={userObject} setUserObject={setUserObject} />}/>
-        {/* <Route exact path="*" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} /> */}
+        <Route exact path="*" render={(props) => <SpotifyPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
       </Switch>
     </Router>
-    
   );
 }
 
