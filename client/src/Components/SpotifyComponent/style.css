@@ -1,0 +1,44 @@
+.spotify-login  {
+    background-image: url(https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202009/MIT-Podcast-Site-01.jpg?itok=jjvv0dyd);
+    background-size: cover;
+    background-position: top;
+    min-height: 100%;
+    height: 100vh;
+    position: relative;
+
+   }
+
+    .spotify-form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 120px 0;
+    font-size: 15px;
+}
+
+   .spotify-form form {
+    border-radius: 3px;
+    margin-bottom: 15px;
+    background-color: rgba(249, 249, 252, 0.479);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 70px;
+  }
+
+  .spotify-form .btn {        
+    font-size: 16px;
+    font-weight: bold;		
+    min-width: 140px;
+    outline: none !important;
+    margin-top: 25px;
+  }
+  .spotify-form h2 {
+    color: black;
+    font-family: fantasy;
+    margin: 0 0 15px;
+    position: relative;
+    text-align: center;
+  }
+
+  .spotify-form form a {
+    color: black;
+    text-decoration: none;
+  }	
