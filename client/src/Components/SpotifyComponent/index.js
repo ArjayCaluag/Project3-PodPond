@@ -98,14 +98,21 @@ function SpotifyComponent() {
   function getCurrentlyPlaying(token) {
     // Make a call using the token
     console.log("call made")
-
-    $.ajax({
-      url: "https://api.spotify.com/v1/me/player",
-      type: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-      },
-      success: (response) => {
+  // axios.get(
+  //   "https://api.spotify.com/v1/me/player",
+  //   {
+  //     headers: {
+  //       "Authorization": "Bearer" + token
+  //     }
+  //   }
+  // )
+    // $.ajax({
+    //   url: "https://api.spotify.com/v1/me/player",
+    //   type: "GET",
+    //   beforeSend: (xhr) => {
+    //     xhr.setRequestHeader("Authorization", "Bearer " + token);
+    //   },
+    //   success: (response) => {
         // Checks if the data is not empty
         if (!response) {
           setNoData(true);
@@ -120,14 +127,7 @@ function SpotifyComponent() {
       }
     })
   }
-  // axios.get(
-  //   "https://api.spotify.com/v1/me/player",
-  //   {
-  //     headers: {
-  //       "Authorization": "Bearer" + token
-  //     }
-  //   }
-  // )
+
 
 
   return (
