@@ -1,15 +1,21 @@
 import React from "react";
-import NavBar from "../../Components/NavBar";
-import SpotifyComponent from "../../Components/SpotifyComponent"
+import SpotifyComponent from "../../Components/SpotifyComponent";
+import LandingPage from "../LandingPage";
 
-function SpotifyPage() {
+function SpotifyPage(props) {
+  if (props.userObject.loggedIn) {
     return (
       <div>
-        <NavBar />
-        <SpotifyComponent/>
+      <SpotifyComponent />
       </div>
     );
+  } else {
+      console.log("User not authenticated, redirect to login React-route");
+      window.location.href = "/";
+      return (
+        <LandingPage userObject={props.userObject} setUserObject={props.setUserObject}/>
+      );
   }
-  
-  export default SpotifyPage;
-  
+}
+
+export default SpotifyPage;

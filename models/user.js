@@ -23,7 +23,7 @@ const userSchema = new Schema({
 
 // Define schema methods
 userSchema.methods = {
-    checkPassword: inputPassword => {
+    checkPassword: function (inputPassword) {
         return bcrypt.compareSync(inputPassword, this.password)
     },
     hashPassword: plainTextPassword => {
@@ -34,14 +34,14 @@ userSchema.methods = {
 // Define pre-hooks for the save method
 userSchema.pre('save', function (next) {
     if (!this.password) {
-        console.log('models/user.js =======NO PASSWORD PROVIDED=======')
+        console.log('models/user.js =======NO PASSWORD PROVIDED=======');
         next()
     } else {
         console.log('models/user.js hashPassword in pre save');
-        this.password = this.hashPassword(this.password)
+        this.password = this.hashPassword(this.password);
         next()
     }
-})
+});
 
 const User = mongoose.model("User", userSchema);
 

@@ -1,11 +1,9 @@
 import React from "react";
-import NavBar from "../../Components/NavBar";
 import SignUpForm from "../../Components/SignUpForm";
 
-function SignUpPage() {
+function SignUpPage(props) {
   return (
     <div>
-      <NavBar />
       <SignUpForm/>
     </div>
   );

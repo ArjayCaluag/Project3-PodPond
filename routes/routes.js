@@ -4,7 +4,10 @@ const pondController = require("../controller/pondController");
 const passport = require("../config/passport");
 const axios = require("axios")
 
-router.post("/api/login", passport.authenticate('local'), function (req, res) {
+// Calls methods from pondController
+
+router.post("/api/login", passport.authenticate("local"), function (req, res) {
+    console.log("req.user in routes:", req.user);
     res.json(req.user);
 });
 
@@ -16,8 +19,32 @@ router.post("/api/signup", function (req, res) {
 router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
-    // will res.redirect work alongside React?
+    // will res.redirect work alongside React? It will not... maybe redirect to root route via URL rather than "/"?
 });
+
+// saved podcast routes
+router.route("/api/savedpodcasts")
+    .get(pondController.savedPodcast)
+    .post(pondController.saveNewPodcast)
+
+// router.route("/api/podcasts")
+  
+// delete from saved podcast
+// "/api/podcasts/:id"
+router.route("/:id")
+    .delete(pondController.remove);
+
+router.route("/api/podcasts/comments")
+    .post(pondController.newComment)
+    .get(pondController.showComments)
+
+
+
+
+
+
+
+
 
 // bottom-most, default route. If no other routes are hit --> send React app
 // router.use(function (req, res) {

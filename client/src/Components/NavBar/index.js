@@ -2,12 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-
 function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to="/search"
-        className="navbar-brand">
+      className="navbar-brand">
         Pod Pond
       </Link>
       <ul className="navbar-nav">
@@ -22,10 +21,11 @@ function NavBar() {
             </Link>
         </li>
         <li className="nav-item">
-          <Link to="/spotify" className="nav-link">
-            Spotify
-             </Link>
+          <Link to="/loginspotify" className="nav-link">
+            Log in to Spotify
+            </Link>
         </li>
+
       </ul>
     </nav>
   );
