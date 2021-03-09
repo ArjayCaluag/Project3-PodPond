@@ -6,8 +6,6 @@ import Player from "../../utils/player"
 import NavBar from "../../Components/NavBar"
 import "./style.css";
 import axios from "axios";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
 
 function SpotifyComponent() {
   const [token, setToken] = useState("");
@@ -33,7 +31,6 @@ function SpotifyComponent() {
       setToken(
         _token,
       );
-      getCurrentlyPlaying(_token);
     }
 
     // set interval for polling every 5 seconds
@@ -60,29 +57,55 @@ function SpotifyComponent() {
   }
 
   function spotSearch(event) {
-    axios.get(
-      "https://api.spotify.com/v1/search",
-      {
-        headers: {
-          "Authorization": "Bearer" + token
-        }
+    event.preventDefault();
+    console.log("search: ", search)
+    let query = `https://api.spotify.com/v1/search?q=` + search + `&type=artist&limit=10`
+    // axios.get(
+    //   query,
+    //   {
+    //     headers: {
+    //       "Authorization": "Bearer" + token
+    //     }
+    //   }
+    // )
+    $.ajax({
+      url: query,
+      type: "GET",
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+      },
+      success: (response) => {
+        console.log(response)
       }
-    )
+    })
   }
+  // $.ajax({
+  //   url: "https://api.spotify.com/v1/me/player",
+  //   type: "GET",
+  //   beforeSend: (xhr) => {
+  //     xhr.setRequestHeader("Authorization", "Bearer " + token);
+  //   },
+  //   success: (data) => {
+  //     // Checks if the data is not empty
+  //     if (!data) {
+  //       this.setState({
+  //         no_data: true,
+  //       });
+  //       return;
+  //     }
+
   //curl -X "GET" "https://api.spotify.com/v1/search?q=SEARCHQUERY&type=podcast&limit=10" -H "Accept: application/json" -H "Content-Type: application/json" -H "Authorization: Bearer BQCw_h2hbUG4QgSLR6BzlQDTqX9q3iePZCp5MVjCk4donbNygem56Vg2Lc0zJlKx9NjZEu3eaYu7_gF8xPXPQDsa1xg8POKRoBDAzU71xmTEPIyTYd89ZWJrekXRaSIKJ8DH2jdq5GBGLznOgY0MLg"
   function getCurrentlyPlaying(token) {
     // Make a call using the token
     console.log("call made")
 
-    axios.get(
-      "https://api.spotify.com/v1/me/player",
-      {
-        headers: {
-          "Authorization": "Bearer" + token
-        }
-      }
-    )
-      .then((response) => {
+    $.ajax({
+      url: "https://api.spotify.com/v1/me/player",
+      type: "GET",
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+      },
+      success: (response) => {
         // Checks if the data is not empty
         if (!response) {
           setNoData(true);
@@ -94,9 +117,17 @@ function SpotifyComponent() {
         setProgress(response.progress_ms)
         setNoData(false)
         return;
-      });
+      }
+    })
   }
-
+  // axios.get(
+  //   "https://api.spotify.com/v1/me/player",
+  //   {
+  //     headers: {
+  //       "Authorization": "Bearer" + token
+  //     }
+  //   }
+  // )
 
 
   return (
@@ -152,11 +183,6 @@ function SpotifyComponent() {
           <button type="button" className="btn btn-outline-primary" >
             Search
         </button>
-          <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </DropdownButton>
         </form >
       </div>
     </div >
