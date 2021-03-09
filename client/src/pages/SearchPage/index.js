@@ -10,13 +10,13 @@ function SearchPage(props) {
     return (
       <div>
         <Jumbotron />
-        <SearchBar />
+        <SearchBar userObject={props.userObject} setUserObject={props.setUserObject}/>
         <PodCastCard />
       </div>
     );
   } else {
       console.log("User not authenticated, redirect to login React-route");
-      window.location.href = "/";
+      window.location.href = "/login";
       return (
         <LandingPage userObject={props.userObject} setUserObject={props.setUserObject}/>
       );

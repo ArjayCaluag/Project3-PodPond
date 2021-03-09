@@ -10,21 +10,21 @@ import SpotifyPage from "./pages/SpotifyPage";
 
 function App() {
   const [userObject, setUserObject] = useState({
-    loggedIn: false
+    loggedIn: false,
+    token: ""
   });
 
   return (
     <Router>
-      <NavBar />
+      {userObject.token && <NavBar />}
       <Switch>
-        <Route exact path="/" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
+        <Route exact path="/" render={(props) => <SpotifyPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
+        <Route exact path={["/login", "/redirect"]} render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />}/>
         <Route exact path="/signup" render={(props) => <SignUpPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
         {/* Routes above are NOT protected by authentication, routes below WILL be protected by authentication. */}
         <Route exact path="/search" render={(props) => <SearchPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
         <Route exact path="/mypond" render={(props) => <SavedPodcast {...props} userObject={userObject} setUserObject={setUserObject} />}/>
-        <Route exact path="/loginspotify" render={(props) => <SpotifyPage {...props} userObject={userObject} setUserObject={setUserObject} />}/>
-
-        <Route exact path="*" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} />
+        {/* <Route exact path="*" render={(props) => <LandingPage {...props} userObject={userObject} setUserObject={setUserObject} />} /> */}
       </Switch>
     </Router>
     

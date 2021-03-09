@@ -1,16 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
+import hash from "../../utils/hash"
+
 
 function LoginForm(props) {
-  
+
   const [formObject, setFormObject] = useState({
     username: '',
     password: ''
   });
   // history will be used to redirect to the next page after the user has registered, and is assigned to the userHistory hook
   let history = useHistory();
+
+
+  useEffect(() => {
+    // Set token
+    let _token = hash.access_token;
+    console.log("token: ", _token)
+    if (_token) {
+      // Set token
+      props.setUserObject({
+        ...props.userObject,
+        token: _token
+      });
+    }
+  }, [])
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -29,14 +45,15 @@ function LoginForm(props) {
         console.log("Response received after login:", res);
         if (res.status === 200) {
           console.log("Successful login");
-          let userObj = {
+
+          // Line below updates userObject stateful variable in App.js, which we then use to pass the userObject to each page
+          props.setUserObject({
+            ...props.userObject,
             _id: res.data._id,
             username: res.data.username,
             saved: res.data.saved,
             loggedIn: true
-          }
-          // Line below updates userObject stateful variable in App.js, which we then use to pass the userObject to each page
-          props.setUserObject(userObj);
+          });
           history.push("/mypond");
         } else {
           console.log("Login error");
