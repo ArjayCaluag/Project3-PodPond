@@ -13,6 +13,8 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
 
 router.post("/api/signup", function (req, res) {
     pondController.register(req, res);
+    // console.log("req.session:", req.session);
+    // console.log("req.user:", req.user);
 });
 
 // GET route for logout function
@@ -27,7 +29,7 @@ router.route("/api/savedpodcasts")
     .post(pondController.saveNewPodcast)
 
 // router.route("/api/podcasts")
-  
+
 // delete from saved podcast
 // "/api/podcasts/:id"
 router.route("/:id")

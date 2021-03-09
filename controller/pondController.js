@@ -8,8 +8,16 @@ module.exports = {
     console.log("Registering User:", req.body.username);
     db.User
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      // .then(function (data) {
+      //   res.redirect(307, "/api/login");
+      // })
+      // .catch(function (err) {
+      //   console.log(err);
+      //   res.status(401).json(err);
+      // });
+
+    .then(dbModel => res.json(dbModel))
+    .catch(err => res.status(422).json(err));
   },
 
   saveNewPodcast: function (req, res) {
@@ -26,14 +34,14 @@ module.exports = {
 
   //Showcase Saved podcast
   savedPodcasts: function (req, res) {
-    db.User.find({username: req.user.username})
-    .populate("saved")
-    .then(dbUser => {
-      res.json(dbUser);
-    })
-    .catch(err => {
-      res.json(err);
-    });
+    db.User.find({ username: req.user.username })
+      .populate("saved")
+      .then(dbUser => {
+        res.json(dbUser);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   },
   // Find podcast by Id
   findById: function (req, res) {

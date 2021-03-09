@@ -20,20 +20,12 @@ function NavBar(props) {
             My Pond
             </Link>
         </li>
-<<<<<<< HEAD
-        <li className="nav-item">
-          <Link to="/loginspotify" className="nav-link">
-            Log in to Spotify
-            </Link>
-        </li>
         {props.userObject.loggedIn ?
           <li className="nav-item">
             <a className="btn btn-success" href="/logout">Logout</a>
           </li>
           : null
         }
-=======
->>>>>>> ceda059493916ea877620ac9906cd128cc537cf9
       </ul>
     </nav>
   );

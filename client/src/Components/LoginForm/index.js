@@ -37,16 +37,10 @@ function LoginForm(props) {
   function handleFormSubmit(event) {
     event.preventDefault();
     API.loginUser({
-<<<<<<< HEAD
       username: formObject.username.trim(),
       password: formObject.password.trim()
-=======
-      username: formObject.username,
-      password: formObject.password,
->>>>>>> ceda059493916ea877620ac9906cd128cc537cf9
     })
       .then((res) => {
-        console.log("Response received after login:", res);
         if (res.status === 200) {
           console.log("Successful login");
 
@@ -67,7 +61,7 @@ function LoginForm(props) {
   }
 
   return (
-    <body className ="login">
+    <div className ="login">
       <div className="wrapper fadeInDownLogin">
         <div className="login-form">
           <form action="/examples/actions/confirmation.php" method="post">
@@ -119,7 +113,7 @@ function LoginForm(props) {
           </div>
         </div>
       </div>
-    </body>
+    </div>
     
   );
 }

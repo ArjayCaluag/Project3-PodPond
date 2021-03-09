@@ -20,7 +20,7 @@ export default {
     },
 
     deletePodcast: function (id){
-        return axios.delete("/api/podcasts" + id)
+        return axios.delete("/api/podcasts" + id);
     },
 
     queryPodcast: function (query){
@@ -29,6 +29,6 @@ export default {
     },
 
     comments: function(){
-        return axios.post("api/podcasts/comments")
+        return axios.get("api/podcasts/comments");
     }
 }

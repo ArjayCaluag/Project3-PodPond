@@ -7,6 +7,16 @@ const podSchema = new Schema({
         unique: true,
         required: true
     },
+    spotifyID: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String
+    },
+    link: {
+        type: String
+    },
     commentIDs: [
         {
             type: Schema.Types.ObjectId,
