@@ -1,4 +1,4 @@
-import React, { useImperativeHandle } from "react";
+import React from "react";
 import Jumbotron from "../../Components/Jumbotron";
 import SearchBar from "../../Components/SearchBar";
 import PodCastCard from "../../Components/PodcastCard";
@@ -16,9 +16,10 @@ function SearchPage(props) {
     );
   } else {
       console.log("User not authenticated, redirect to login React-route");
+      window.location.href = "/";
       return (
         <LandingPage userObject={props.userObject} setUserObject={props.setUserObject}/>
-      )
+      );
   }
 
 }
