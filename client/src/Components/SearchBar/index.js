@@ -1,6 +1,7 @@
 import "./style.css";
 import React, { useState } from "react";
 import * as $ from "jquery";
+import API from "../../utils/API";
 
 function SearchBar(props) {
   const [search, setSearch] = useState("");
@@ -11,10 +12,11 @@ function SearchBar(props) {
     setSearch(value)
   }
 
-  function spotSearch(event) {
+  function handleFormSubmit(event) {
     event.preventDefault();
+    let type = "episode,show";
+    API.spotSearch(search, type, props.userObject.token)
     console.log("search: ", search)
-    let query = `https://api.spotify.com/v1/search?q=` + search + `&type=episode,show&limit=10`
     // axios.get(
     //   query,
     //   {
@@ -23,21 +25,12 @@ function SearchBar(props) {
     //     }
     //   }
     // )
-    $.ajax({
-      url: query,
-      type: "GET",
-      beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + props.userObject.token);
-      },
-      success: (response) => {
-        console.log(response)
-      }
-    })
+
   }
 
   return (
     <div className="card mb-5 d-block mx-auto" id="searchbar">
-      <form className="input-group" onSubmit={spotSearch}>
+      <form className="input-group" onSubmit={handleFormSubmit}>
         <input
           type="search"
           className="form-control rounded"
