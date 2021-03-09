@@ -1,6 +1,5 @@
 import "./style.css";
 import React, { useState } from "react";
-import * as $ from "jquery";
 import API from "../../utils/API";
 
 function SearchBar(props) {
