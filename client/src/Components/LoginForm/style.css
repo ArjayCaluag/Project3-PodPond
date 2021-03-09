@@ -1,3 +1,13 @@
+  .login  {
+    background-image: url(https://news.mit.edu/sites/default/files/styles/news_article__image_gallery/public/images/202009/MIT-Podcast-Site-01.jpg?itok=jjvv0dyd);
+    background-size: cover;
+    background-position: top;
+    min-height: 100%;
+    height: 100vh;
+    position: relative;
+
+   }
+  
   .wrapper {
     display: flex;
     align-items: center;
@@ -8,8 +18,9 @@
     padding: 20px;
   }
 
+
   #form-control {
-    height: 40px;
+    height: 0px;
     box-shadow: none;
     color: #969fa4;
   }
@@ -22,11 +33,12 @@
   .login-form {
     width: 450px;
     margin: 0 auto;
-    padding: 30px 0;
+    padding: 120px 0;
       font-size: 15px;
   }
   .login-form h2 {
-    color: #636363;
+    color: black;
+    font-family: fantasy;
     margin: 0 0 15px;
     position: relative;
     text-align: center;
@@ -41,9 +53,9 @@
     color: #999;
     border-radius: 3px;
     margin-bottom: 15px;
-    background: #f2f3f7;
+    background-color: rgba(249, 249, 252, 0.479);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 30px;
+    padding: 70px;
   }
   .login-form .form-group {
     margin-bottom: 20px;
@@ -64,7 +76,7 @@
     padding-left: 10px;
   }    	
   .login-form a {
-    color: blue;
+    color: rgb(255, 255, 255);
     text-decoration: underline;
   }
   .login-form a:hover {
@@ -77,6 +89,9 @@
   .login-form form a:hover {
     text-decoration: underline;
   }  
+  .text-center {
+    color: rgba(187, 184, 184, 0.986)
+  }
   
   /* ANIMATIONS */
   
