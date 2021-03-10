@@ -3,10 +3,10 @@ import { Link, useHistory } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
 
-function SignUpForm() {
+function SignUpForm(props) {
   const [formObject, setFormObject] = useState({
     username: "",
-    password: "",
+    password: ""
   });
   // history will be used to redirect to the next page after the user has registered
   let history = useHistory();
@@ -21,15 +21,21 @@ function SignUpForm() {
   function handleFormSubmit(event) {
     event.preventDefault();
     API.registerUser({
-      username: formObject.username,
-      password: formObject.password,
+      username: formObject.username.trim(),
+      password: formObject.password.trim()
     })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.data) {
           console.log("Successful signup");
-          // update history.push React Route destination. Currently "/mypond" directs to the SavedPodcast page. We can use this (and an equivalent on login page) to force the user towards the spotify login
-          history.push("/mypond");
+          props.setUserObject({
+            ...props.userObject,
+            _id: res.data._id,
+            username: res.data.username,
+            saved: res.data.saved,
+            loggedIn: false
+          });
+          history.push("/login");
         } else {
           console.log("Signup error");
         }
@@ -89,7 +95,7 @@ function SignUpForm() {
           </form>
 
           <div className="text-center">
-            Already have an account? <Link to="/">Sign in</Link>
+            Already have an account? <Link to="/login">Sign in</Link>
           </div>
         </div>
       </div>

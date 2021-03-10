@@ -1,15 +1,19 @@
 import React from "react";
 import "./style.css";
 
-function PodCastCard() {
+function PodCastCard(props) {
   return (
     <div className="card" >
-      <img className="card-img-top" src="..." alt="Podcast Thumbnail" />
+      <img className="card-img-top" src={props.image} alt="Podcast Thumbnail" />
       <div className="card-body">
-        <h5 className="card-title">Podcast Title</h5>
+        <h5 className="card-title">{props.title}</h5>
         <p className="card-text">
-         Placeholder (description of podcast?)(Or host)
+         {props.publisher}
         </p>
+        <a className="btn btn-success" rel="noopener noreferrer" target="_blank" href={props.link}>
+          View on Spotify
+        </a>
+        {/* turn element below into a button that will save to database onClick. Use google books as example */}
         <a href="#" className="btn btn-primary">
           Save to myPond
         </a>
