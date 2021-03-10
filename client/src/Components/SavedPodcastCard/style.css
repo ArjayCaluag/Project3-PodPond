@@ -1,11 +1,14 @@
 
 .savedPodcast {
-   
     border-radius: 2px;
-   
     justify-content: center;
     /* max-width: 1500px;  */
- 
-  
 }
+
+.savedImg{
+    max-width: 100% ;
+    height: auto;
+}
+
+
 

@@ -3,7 +3,7 @@ import "./style.css";
 
 function PodCastCard(props) {
   return (
-    <div className="card podcastCard" >
+    <div className="card" >
       <img className="card-img-top" src={props.image} alt="Podcast Thumbnail" />
       <div className="card-body d-flex flex-column">
         <h5 className="card-title">{props.title}</h5>

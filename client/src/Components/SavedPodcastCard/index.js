@@ -7,7 +7,7 @@ function SavedPodcastCard(props) {
       <div class="card savedCard">
         <div className="row no-gutters">
           <div class="col-sm-5">
-            <img src={props.image} class="card-img-top h-100"></img>
+            <img src={props.image} class="card-img-thumbnail savedImg"></img>
           </div>
 
           <div class="col-sm-7">
