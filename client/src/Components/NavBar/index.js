@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { scopes } from "../../utils/config";
 
 function NavBar(props) {
   return (
@@ -20,13 +21,27 @@ function NavBar(props) {
             My Pond
             </Link>
         </li>
-        {props.userObject.loggedIn ?
+      </ul>
+      {props.userObject.loggedIn ?
+        <ul className="nav navbar-nav ml-auto">
+          {!props.userObject.token &&
+            <li className="nav-item">
+              <a className="btn btn-success" href={`${process.env.REACT_APP_authEndpoint}?client_id=${
+                  process.env.REACT_APP_clientId
+                }&redirect_uri=${
+                  process.env.REACT_APP_redirectUri
+                }&scope=${scopes.join(
+                  "%20"
+                )}&response_type=token&show_dialog=true`}>Spotify</a>
+            </li>
+          }
           <li className="nav-item">
-            <a className="btn btn-success" href="/logout">Logout</a>
+            <a className="btn btn-outline-success" href="/logout">Logout</a>
           </li>
+          </ul>
+
           : null
         }
-      </ul>
     </nav>
   );
 }
