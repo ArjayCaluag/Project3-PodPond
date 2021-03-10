@@ -9,14 +9,6 @@ module.exports = {
     console.log("Registering User:", req.body.username);
     db.User
       .create(req.body)
-      // .then(function (data) {
-      //   res.redirect(307, "/api/login");
-      // })
-      // .catch(function (err) {
-      //   console.log(err);
-      //   res.status(401).json(err);
-      // });
-
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -74,12 +66,22 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
   // Remove from favorites
-  remove: function (req, res) {
-    db.Podcast
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  removePodcast: function (req, res) {
+    // db.User
+    //   .findById({ _id: req.params.id })
+    //   .then(dbModel => dbModel.remove())
+    //   .then(dbModel => res.json(dbModel))
+    //   .catch(err => res.status(422).json(err));
+    console.log("Hit removePodcast!!");
+    console.log("req.params.id:", req.params.id);
+
+    // db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.params.id } }, { new: true })
+    //   .then(dbModel => {
+    //     res.json(dbModel);
+    //   })
+    //   .catch(err => {
+    //     res.json(err);
+    //   });
   },
 
   newComment: function (req, res) {
