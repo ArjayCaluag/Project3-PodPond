@@ -26,12 +26,11 @@ router.route("/api/savedpodcasts")
     .get(pondController.savedPodcasts)
     .post(pondController.saveNewPodcast)
 
-// router.route("/api/podcasts")
-
 // delete from saved podcast
 router.route("/api/podcasts/:id")
     .delete(pondController.removePodcast);
 
+// routes for comments
 router.route("/api/podcasts/comments")
     .post(pondController.newComment)
     .get(pondController.showComments)

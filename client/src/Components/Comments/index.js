@@ -3,7 +3,7 @@ import "./style.css";
 
 function CommentSection() {
   return (
-    <div class="container justify-content-center mt-5 border-left border-right">
+    <div class="container justify-content-center mt-5 border-left border-right comments">
       <div class="d-flex justify-content-center pt-3 pb-2">
         {" "}
         <input
