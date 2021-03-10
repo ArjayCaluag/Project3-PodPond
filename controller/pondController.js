@@ -1,5 +1,4 @@
 const db = require("../models");
-const { findOne } = require("../models/user");
 
 // Methods for use in routes.js
 
@@ -9,14 +8,6 @@ module.exports = {
     console.log("Registering User:", req.body.username);
     db.User
       .create(req.body)
-      // .then(function (data) {
-      //   res.redirect(307, "/api/login");
-      // })
-      // .catch(function (err) {
-      //   console.log(err);
-      //   res.status(401).json(err);
-      // });
-
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -25,7 +16,7 @@ module.exports = {
     db.Podcast.findOne({ spotifyID: req.body.spotifyID })
       .then(result => {
         if (result) {
-          db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: result._id } }, { new: true })
+          db.User.findOneAndUpdate({ username: req.user.username }, { $addToSet: { saved: result._id } }, { new: true })
             .then(dbModel => {
               res.json(dbModel);
             })
@@ -34,7 +25,8 @@ module.exports = {
             });
         } else {
           db.Podcast.create(req.body)
-            .then(({ _id }) => db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
+            .then(({ _id }) =>
+              db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
             .then(dbModel => {
               res.json(dbModel);
             })
@@ -64,12 +56,16 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
   // Remove from favorites
-  remove: function (req, res) {
-    db.Podcast
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  removePodcast: function (req, res) {
+    console.log("Removing podcast with id: ", req.params.id);
+    1
+    db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.params.id } }, { new: true })
+      .then(dbModel => {
+        res.json(dbModel);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   },
 
   newComment: function (req, res) {
