@@ -21,9 +21,10 @@ module.exports = {
   },
 
   saveNewPodcast: function (req, res) {
+    // write conditional statement to create the podcast only if it's not in the database.
+    // If it is in the database, still do the findOneAndUpdate to the User so they save it properly
     db.Podcast.create(req.body)
       .then(({ _id }) => db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
-      // target for filter in findOneAndUpdate? the _id?
       .then(dbModel => {
         res.json(dbModel);
       })
@@ -34,7 +35,7 @@ module.exports = {
 
   //Showcase Saved podcast
   savedPodcasts: function (req, res) {
-    db.User.find({ username: req.user.username })
+    db.User.findOne({ username: req.user.username })
       .populate("saved")
       .then(dbUser => {
         res.json(dbUser);

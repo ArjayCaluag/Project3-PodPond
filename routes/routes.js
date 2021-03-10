@@ -7,14 +7,12 @@ const axios = require("axios")
 // Calls methods from pondController
 
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
-    console.log("req.user in routes:", req.user);
+    // console.log("req.user in routes:", req.user);
     res.json(req.user);
 });
 
 router.post("/api/signup", function (req, res) {
     pondController.register(req, res);
-    // console.log("req.session:", req.session);
-    // console.log("req.user:", req.user);
 });
 
 // GET route for logout function

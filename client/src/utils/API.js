@@ -11,22 +11,22 @@ export default {
         return axios.post("/api/login", userData);
     },
     
-    // getPodcasts: function(){
-    //     return axios.get("/api/podcasts")
-    // },
+    getPodcasts: function(){
+        return axios.get("/api/savedpodcasts");
+    },
 
     savePodcast: function (podcastData){
-        return axios.post ("/api/savedpodcasts", podcastData)
+        return axios.post("/api/savedpodcasts", podcastData)
     },
 
     deletePodcast: function (id){
         return axios.delete("/api/podcasts" + id);
     },
 
-    queryPodcast: function (query){
-        console.log(query);
-        return axios.get("api/podcasts/search", {params: {q:query}});
-    },
+    // queryPodcast: function (query){
+    //     console.log(query);
+    //     return axios.get("api/podcasts/search", {params: {q:query}});
+    // },
 
     comments: function(){
         return axios.get("api/podcasts/comments");
