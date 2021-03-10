@@ -24,8 +24,11 @@ function NavBar(props) {
       </ul>
       {props.userObject.loggedIn ?
         <ul className="nav navbar-nav ml-auto">
+          <li className="nav-item navbar-text">
+            Welcome {props.userObject.username }!
+          </li>
           {!props.userObject.token &&
-            <li className="nav-item">
+            <li className="nav-item ">
               <a className="btn btn-success" href={`${process.env.REACT_APP_authEndpoint}?client_id=${
                   process.env.REACT_APP_clientId
                 }&redirect_uri=${

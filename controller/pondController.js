@@ -25,13 +25,23 @@ module.exports = {
     db.Podcast.findOne({ spotifyID: req.body.spotifyID })
       .then(result => {
         if (result) {
-          db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: result._id } }, { new: true })
-            .then(dbModel => {
-              res.json(dbModel);
-            })
-            .catch(err => {
-              res.json(err);
-            });
+          db.User.find({
+            saved: {
+              $elemMatch: {
+                id: result._id}
+            }
+          })
+            .then(moreRes => {
+              if (!moreRes) {
+                db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: result._id } }, { new: true })
+                .then(dbModel => {
+                  res.json(dbModel);
+                })
+                .catch(err => {
+                  res.json(err);
+                });
+            }
+          })
         } else {
           db.Podcast.create(req.body)
             .then(({ _id }) => db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
