@@ -48,7 +48,7 @@ module.exports = {
         res.json(err);
       });
   },
-  
+
   // Remove from favorites
   removePodcast: function (req, res) {
     console.log("Removing podcast with id: ", req.params.id);
@@ -69,9 +69,13 @@ module.exports = {
   },
 
   showComments: function (req, res) {
-    db.Comment
-      .findAll()
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+    db.Podcast.findOne({ username: req.user.username })
+      .populate("commentIDs")
+      .then(dbUser => {
+        res.json(dbUser);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   }
 };
