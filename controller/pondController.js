@@ -1,4 +1,5 @@
 const db = require("../models");
+const { findOne } = require("../models/user");
 
 // Methods for use in routes.js
 
@@ -16,28 +17,37 @@ module.exports = {
       //   res.status(401).json(err);
       // });
 
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   },
 
   saveNewPodcast: function (req, res) {
-    console.log("req.body:", req.body);
-    console.log("req.user:", req.user);
-    // write conditional statement to create the podcast only if it's not in the database.
-    // If it is in the database, still do the findOneAndUpdate to the User so they save it properly
-    db.Podcast.create(req.body)
-      .then(({ _id }) => db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
-      .then(dbModel => {
-        res.json(dbModel);
-      })
-      .catch(err => {
-        res.json(err);
+    db.Podcast.findOne({ spotifyID: req.body.spotifyID })
+      .then(result => {
+        if (result) {
+          db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: result._id } }, { new: true })
+            .then(dbModel => {
+              res.json(dbModel);
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        } else {
+          db.Podcast.create(req.body)
+            .then(({ _id }) => db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
+            .then(dbModel => {
+              res.json(dbModel);
+            })
+            .catch(err => {
+              res.json(err);
+            });
+        }
       });
   },
 
   //Showcase Saved podcast
   savedPodcasts: function (req, res) {
-    db.User.find({ username: req.user.username })
+    db.User.findOne({ username: req.user.username })
       .populate("saved")
       .then(dbUser => {
         res.json(dbUser);
