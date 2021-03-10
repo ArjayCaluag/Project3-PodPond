@@ -79,15 +79,15 @@ function SearchBar(props) {
       </div>
       <Wrapper>
         {podcasts.map((podcast, index) => {
-          return (
-            <PodCastCard
-              key={index}
-              image={podcast.images[1].url}
-              title={podcast.name}
-              publisher={podcast.publisher}
-              link={podcast.external_urls.spotify}
-            />
-          );
+          return <PodCastCard
+            podcast={podcast}
+            key={index}
+            onClick={saveToPond}
+            image={podcast.images[1].url}
+            title={podcast.name}
+            publisher={podcast.publisher}
+            link={podcast.external_urls.spotify}
+          />
         })}
       </Wrapper>
     </div>
