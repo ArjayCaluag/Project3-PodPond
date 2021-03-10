@@ -14,9 +14,9 @@ function PodCastCard(props) {
           View on Spotify
         </a>
         {/* turn element below into a button that will save to database onClick. Use google books as example */}
-        <a href="#" className="btn btn-primary">
-          Save to MyPond
-        </a>
+        <button onClick={() => props.onClick(props.podcast)} className="btn btn-primary">
+          Save to myPond
+        </button>
       </div>
     </div>
   )

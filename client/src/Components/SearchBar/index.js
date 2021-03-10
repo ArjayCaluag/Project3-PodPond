@@ -2,6 +2,7 @@ import "./style.css";
 import React, { useState } from "react";
 import PodCastCard from "../PodcastCard";
 import * as $ from "jquery";
+import API from "../../utils/API";
 import Wrapper from "../Wrapper";
 
 function SearchBar(props) {
@@ -10,7 +11,6 @@ function SearchBar(props) {
 
   function handleInputChange(event) {
     const { value } = event.target;
-    console.log(value);
     setSearch(value);
   }
 
@@ -49,6 +49,16 @@ function SearchBar(props) {
     // )
   }
 
+  function saveToPond(podcast) {
+    API.savePodcast({
+      title: podcast.name,
+      spotifyID: podcast.id,
+      image: podcast.images[1].url,
+      publisher: podcast.publisher,
+      link: podcast.external_urls.spotify
+    });
+  }
+
   return (
     <div className="container">
       <div className="mb-5 d-block mx-auto" id="searchbar">
@@ -69,15 +79,15 @@ function SearchBar(props) {
       </div>
       <Wrapper>
         {podcasts.map((podcast, index) => {
-          return (
-            <PodCastCard
-              key={index}
-              image={podcast.images[1].url}
-              title={podcast.name}
-              publisher={podcast.publisher}
-              link={podcast.external_urls.spotify}
-            />
-          );
+          return <PodCastCard
+            podcast={podcast}
+            key={index}
+            onClick={saveToPond}
+            image={podcast.images[1].url}
+            title={podcast.name}
+            publisher={podcast.publisher}
+            link={podcast.external_urls.spotify}
+          />
         })}
       </Wrapper>
     </div>
