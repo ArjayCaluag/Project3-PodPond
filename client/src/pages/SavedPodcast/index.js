@@ -35,7 +35,7 @@ function SavedPodcast(props) {
             key={index}
             onClick={deletePodcast}
             image={podcast.image}
-            title={podcast.name}
+            title={podcast.title}
             publisher={podcast.publisher}
             link={podcast.link}
           />
