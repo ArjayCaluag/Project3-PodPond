@@ -1,3 +1,19 @@
-.card {
+/* .card {
     width: 18rem;
+} */
+
+.card {
+   
+    border-radius: 2px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    justify-content: center;
+    width: 18rem;
+    margin: 15px;
+    flex-grow: 1;
 }
+
+
+
+
+
+
