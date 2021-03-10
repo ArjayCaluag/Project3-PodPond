@@ -7,7 +7,7 @@ function SavedPodcastCard(props) {
       <div className="card savedCard">
         <div className="row no-gutters">
           <div className="col-sm-5">
-            <img src={props.image} className="card-img-thumbnail savedImg"></img>
+            <img alt="Podcast thumbnail" src={props.image} className="card-img-thumbnail savedImg"></img>
           </div>
 
           <div className="col-sm-7">
@@ -31,25 +31,6 @@ function SavedPodcastCard(props) {
       </div>
     </div>
   );
-}
-
-{
-  /* <div class="bs-example">
-    <div class="card" style="max-width: 500px;">
-        <div class="row no-gutters">
-            <div class="col-sm-5" style="background: #868e96;">
-                <img src="/examples/images/sample.svg" class="card-img-top h-100" alt="...">
-            </div>
-            <div class="col-sm-7">
-                <div class="card-body">
-                    <h5 class="card-title">Alice Liddel</h5>
-                    <p class="card-text">Alice is a freelance web designer and developer based in London. She is specialized in HTML5, CSS3, JavaScript, Bootstrap, etc.</p>
-                    <a href="#" class="btn btn-primary stretched-link">View Profile</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> */
 }
 
 export default SavedPodcastCard;
