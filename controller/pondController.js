@@ -37,7 +37,7 @@ module.exports = {
 
   //Showcase Saved podcast
   savedPodcasts: function (req, res) {
-    db.User.find({ username: req.user.username })
+    db.User.findOne({ username: req.user.username })
       .populate("saved")
       .then(dbUser => {
         res.json(dbUser);
