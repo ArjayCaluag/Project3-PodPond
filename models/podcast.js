@@ -17,6 +17,9 @@ const podSchema = new Schema({
     link: {
         type: String
     },
+    publisher: {
+        type: String
+    },
     commentIDs: [
         {
             type: Schema.Types.ObjectId,

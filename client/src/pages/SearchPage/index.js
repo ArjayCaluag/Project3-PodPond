@@ -1,7 +1,6 @@
 import React from "react";
 import Jumbotron from "../../Components/Jumbotron";
 import SearchBar from "../../Components/SearchBar";
-import PodCastCard from "../../Components/PodcastCard";
 import LandingPage from "../LandingPage";
 
 function SearchPage(props) {
@@ -11,7 +10,6 @@ function SearchPage(props) {
       <div>
         <Jumbotron />
         <SearchBar userObject={props.userObject} setUserObject={props.setUserObject}/>
-        <PodCastCard />
       </div>
     );
   } else {
