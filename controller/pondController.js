@@ -48,17 +48,10 @@ module.exports = {
         res.json(err);
       });
   },
-  // Find podcast by Id
-  findById: function (req, res) {
-    db.Podcast
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
-  },
+  
   // Remove from favorites
   removePodcast: function (req, res) {
     console.log("Removing podcast with id: ", req.params.id);
-    1
     db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.params.id } }, { new: true })
       .then(dbModel => {
         res.json(dbModel);
