@@ -4,14 +4,14 @@ import "./style.css";
 function SavedPodcastCard(props) {
   return (
     <div className="container savedPodcast">
-      <div class="card savedCard">
+      <div className="card savedCard">
         <div className="row no-gutters">
-          <div class="col-sm-5">
-            <img src={props.image} class="card-img-thumbnail savedImg"></img>
+          <div className="col-sm-5">
+            <img src={props.image} className="card-img-thumbnail savedImg"></img>
           </div>
 
-          <div class="col-sm-7">
-            <div class="card-body">
+          <div className="col-sm-7">
+            <div className="card-body">
               <h5 className="card-title">{props.title}</h5>
               <p className="card-text">{props.publisher}</p>
               <a
@@ -22,6 +22,9 @@ function SavedPodcastCard(props) {
               >
                 View on Spotify
               </a>
+              <button onClick={() => props.onClick(props.podcast)} className="btn btn-danger">
+                Delete Book from MyPond
+              </button>
             </div>
           </div>
         </div>

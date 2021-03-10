@@ -72,14 +72,16 @@ module.exports = {
     //   .then(dbModel => dbModel.remove())
     //   .then(dbModel => res.json(dbModel))
     //   .catch(err => res.status(422).json(err));
+    console.log("Hit removePodcast!!");
+    console.log("req.params.id:", req.params.id);
 
-    db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.body._id } }, { new: true })
-      .then(dbModel => {
-        res.json(dbModel);
-      })
-      .catch(err => {
-        res.json(err);
-      });
+    // db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.params.id } }, { new: true })
+    //   .then(dbModel => {
+    //     res.json(dbModel);
+    //   })
+    //   .catch(err => {
+    //     res.json(err);
+    //   });
   },
 
   newComment: function (req, res) {

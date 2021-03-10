@@ -17,6 +17,14 @@ function SavedPodcast(props) {
       .catch(err => console.log(err));
   }
 
+  function deletePodcast(podcast) {
+    console.log("Podcast id:", podcast._id);
+    const podcastId = podcast._id;
+    API.deletePodcast(podcastId)
+        .then(() => loadPodcasts())
+        .catch((err) => console.log(err));
+}
+
   if (props.userObject.loggedIn) {
     return (
       <div>
@@ -25,7 +33,7 @@ function SavedPodcast(props) {
           return <SavedPodcastCard
             podcast={podcast}
             key={index}
-            // onClick={saveToPond}  replace with delete function
+            onClick={deletePodcast}
             image={podcast.image}
             title={podcast.name}
             publisher={podcast.publisher}
