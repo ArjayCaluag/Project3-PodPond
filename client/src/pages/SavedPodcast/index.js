@@ -1,11 +1,10 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import PodCastCard from "../../Components/PodcastCard";
 import LandingPage from "../LandingPage";
 import MyPondJumbotron from "../../Components/myPondJumbotron";
 
 function SavedPodcast(props) {
-
+  
   if (props.userObject.loggedIn) {
     return (
       <div>
