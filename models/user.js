@@ -16,7 +16,6 @@ const userSchema = new Schema({
     saved: [
         {
             type: Schema.Types.ObjectId,
-            unique: true,
             ref: "Podcast"
         }
     ]

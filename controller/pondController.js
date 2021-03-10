@@ -1,5 +1,4 @@
 const db = require("../models");
-const { findOne } = require("../models/user");
 
 // Methods for use in routes.js
 
@@ -17,26 +16,17 @@ module.exports = {
     db.Podcast.findOne({ spotifyID: req.body.spotifyID })
       .then(result => {
         if (result) {
-          db.User.find({
-            saved: {
-              $elemMatch: {
-                id: result._id}
-            }
-          })
-            .then(moreRes => {
-              if (!moreRes) {
-                db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: result._id } }, { new: true })
-                .then(dbModel => {
-                  res.json(dbModel);
-                })
-                .catch(err => {
-                  res.json(err);
-                });
-            }
-          })
+          db.User.findOneAndUpdate({ username: req.user.username }, { $addToSet: { saved: result._id } }, { new: true })
+            .then(dbModel => {
+              res.json(dbModel);
+            })
+            .catch(err => {
+              res.json(err);
+            });
         } else {
           db.Podcast.create(req.body)
-            .then(({ _id }) => db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
+            .then(({ _id }) =>
+              db.User.findOneAndUpdate({ username: req.user.username }, { $push: { saved: _id } }, { new: true }))
             .then(dbModel => {
               res.json(dbModel);
             })
@@ -67,21 +57,15 @@ module.exports = {
   },
   // Remove from favorites
   removePodcast: function (req, res) {
-    // db.User
-    //   .findById({ _id: req.params.id })
-    //   .then(dbModel => dbModel.remove())
-    //   .then(dbModel => res.json(dbModel))
-    //   .catch(err => res.status(422).json(err));
-    console.log("Hit removePodcast!!");
-    console.log("req.params.id:", req.params.id);
-
-    // db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.params.id } }, { new: true })
-    //   .then(dbModel => {
-    //     res.json(dbModel);
-    //   })
-    //   .catch(err => {
-    //     res.json(err);
-    //   });
+    console.log("Removing podcast with id: ", req.params.id);
+    1
+    db.User.findOneAndUpdate({ username: req.user.username }, { $pull: { saved: req.params.id } }, { new: true })
+      .then(dbModel => {
+        res.json(dbModel);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   },
 
   newComment: function (req, res) {
