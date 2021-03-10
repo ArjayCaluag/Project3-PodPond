@@ -2,7 +2,7 @@
     width: 18rem;
 } */
 
-.card {
+.podcastCard {
    
     border-radius: 2px;
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
@@ -11,9 +11,3 @@
     margin: 15px;
     flex-grow: 1;
 }
-
-
-
-
-
-
