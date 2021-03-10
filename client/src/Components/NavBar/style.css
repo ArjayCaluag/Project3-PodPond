@@ -6,6 +6,10 @@
     
 }
 
+.navbar-text {
+    padding-right: 20px;
+}
+
 .ml-auto > nav-item {
     padding-left: 20px;
     padding-right: 20px;
