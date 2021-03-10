@@ -1,4 +1,5 @@
 import React from "react";
+import CommentsSection from "../Comments"
 import "./style.css";
 
 function SavedPodcastCard(props) {
@@ -14,6 +15,7 @@ function SavedPodcastCard(props) {
             <div className="card-body">
               <h5 className="card-title">{props.title}</h5>
               <p className="card-text">{props.publisher}</p>
+             
               <a
                 className="btn btn-success mt-auto"
                 rel="noopener noreferrer"
@@ -25,10 +27,13 @@ function SavedPodcastCard(props) {
               <button onClick={() => props.onClick(props.podcast)} className="btn btn-danger">
                 Delete Book from MyPond
               </button>
+            
             </div>
           </div>
         </div>
+        <CommentsSection/>
       </div>
+     
     </div>
   );
 }
