@@ -1,7 +1,8 @@
 import "./style.css";
 import React, { useState } from "react";
-import PodCastCard from "../PodcastCard"
+import PodCastCard from "../PodcastCard";
 import * as $ from "jquery";
+import Wrapper from "../Wrapper";
 
 function SearchBar(props) {
   const [search, setSearch] = useState("");
@@ -9,27 +10,35 @@ function SearchBar(props) {
 
   function handleInputChange(event) {
     const { value } = event.target;
-    console.log(value)
-    setSearch(value)
+    console.log(value);
+    setSearch(value);
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
     let type = "episode,show";
-    let query = `https://api.spotify.com/v1/search?q=` + search + `&type=` + type + `&limit=10`;
+    let query =
+      `https://api.spotify.com/v1/search?q=` +
+      search +
+      `&type=` +
+      type +
+      `&limit=12`;
     $.ajax({
       url: query,
       type: "GET",
       beforeSend: (xhr) => {
-        xhr.setRequestHeader("Authorization", "Bearer " + props.userObject.token);
+        xhr.setRequestHeader(
+          "Authorization",
+          "Bearer " + props.userObject.token
+        );
       },
       success: (response) => {
         console.log(response);
         setPodcasts(response.shows.items);
-      }
+      },
     });
 
-    console.log("search: ", search)
+    console.log("search: ", search);
     // axios.get(
     //   query,
     //   {
@@ -53,18 +62,24 @@ function SearchBar(props) {
             value={search}
             onChange={handleInputChange}
           />
-        </form >
-        <small className="justify-content-center">Press enter to start the search</small>
+        </form>
+        <small className="justify-content-center">
+          Press enter to start the search
+        </small>
       </div>
-      {podcasts.map((podcast, index) => {
-        return <PodCastCard
-          key={index}
-          image={podcast.images[1].url}
-          title={podcast.name}
-          publisher={podcast.publisher}
-          link={podcast.external_urls.spotify}
-        />
-      })}
+      <Wrapper>
+        {podcasts.map((podcast, index) => {
+          return (
+            <PodCastCard
+              key={index}
+              image={podcast.images[1].url}
+              title={podcast.name}
+              publisher={podcast.publisher}
+              link={podcast.external_urls.spotify}
+            />
+          );
+        })}
+      </Wrapper>
     </div>
   );
 }
