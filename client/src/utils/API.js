@@ -16,7 +16,7 @@ export default {
     // },
 
     savePodcast: function (podcastData){
-        return axios.post ("/api/savedpodcasts", podcastData)
+        return axios.post("/api/savedpodcasts", podcastData)
     },
 
     deletePodcast: function (id){

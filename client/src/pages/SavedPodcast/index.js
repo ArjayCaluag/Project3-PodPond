@@ -3,6 +3,7 @@ import React from "react";
 import PodCastCard from "../../Components/PodcastCard";
 import LandingPage from "../LandingPage";
 import MyPondJumbotron from "../../Components/myPondJumbotron";
+import SavedPodcastCard from "../../Components/SavedPodcastCard";
 
 function SavedPodcast(props) {
 
@@ -10,7 +11,7 @@ function SavedPodcast(props) {
     return (
       <div>
       <MyPondJumbotron/>
-      <PodCastCard/>
+      <SavedPodcastCard/>
     </div>
     );
   } else {
