@@ -19,11 +19,21 @@ function SavedPodcastCard(props) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    let thisDate = new Date().toLocaleDateString(
+      'en-gb',
+      {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
     setPost("");
     API.saveComment({
       text: post,
       spotifyID: props.podcast.spotifyID,
-      owner: props.userObject.username
+      owner: props.userObject.username,
+      postedDate: thisDate
     })
       .then(() => loadComments());
   }
@@ -88,6 +98,7 @@ function SavedPodcastCard(props) {
   );
 }
 
+<<<<<<< HEAD
 export default SavedPodcastCard;
 <<<<<<< HEAD
 =======
@@ -104,3 +115,6 @@ export default SavedPodcastCard;
 //   />
 // })}
 >>>>>>> 12c3f83443ee680ca3a0d014c732ad003972687c
+=======
+export default SavedPodcastCard;
+>>>>>>> 03f3d1df2f3c6046b093864ea369210e4a885fe3
