@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./Components/NavBar";
@@ -13,8 +13,23 @@ function App() {
     loggedIn: false,
     token: ""
   });
+  console.log(window);
+  function checkForPlayer() {
+    if (window.Spotify !== null && userObject.token) {
+      console.log("window.spotify: ", window.Spotify);
+      let player = new window.Spotify.Player({
+        name: "Matt's Spotify Player",
+        getOAuthToken: cb => { cb(userObject.token); },
+      });
+      // this.createEventHandlers();
 
+      // finally, connect!
+      player.connect();
+    }
+  }
+  checkForPlayer();
   return (
+
     <Router>
       {userObject.loggedIn && <NavBar userObject={userObject} />}
       <Switch>

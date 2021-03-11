@@ -4,7 +4,7 @@ import SearchBar from "../../Components/SearchBar";
 import LandingPage from "../LandingPage";
 
 function SearchPage(props) {
-
+  
   if (props.userObject.loggedIn) {
     return (
       <div>
