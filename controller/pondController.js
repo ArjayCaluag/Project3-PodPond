@@ -4,6 +4,8 @@ const db = require("../models");
 
 // Methods to export
 module.exports = {
+  
+  // Register new user to the database
   register: function (req, res) {
     console.log("Registering User:", req.body.username);
     db.User
@@ -11,7 +13,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-
+  
+  // save a podcast to MyPond
   saveNewPodcast: function (req, res) {
     db.Podcast.findOne({ spotifyID: req.body.spotifyID })
       .then(result => {
@@ -41,8 +44,8 @@ module.exports = {
   savedPodcasts: function (req, res) {
     db.User.findOne({ username: req.user.username })
       .populate("saved")
-      .then(dbUser => {
-        res.json(dbUser);
+      .then(dbModel => {
+        res.json(dbModel);
       })
       .catch(err => {
         res.json(err);
@@ -61,18 +64,25 @@ module.exports = {
       });
   },
 
+  // post a comment on a Podcast card
   newComment: function (req, res) {
-    db.Comment
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err))
+    db.Comment.create(req.body)
+      .then(({ _id }) =>
+        db.Podcast.findOneAndUpdate({ spotifyID: req.body.spotifyID }, { $push: { commentIDs: _id } }, { new: true }))
+      .then(dbModel => {
+        res.json(dbModel);
+      })
+      .catch(err => {
+        res.json(err);
+      });
   },
 
+  // show all comments on each Podcast
   showComments: function (req, res) {
-    db.Podcast.findOne({ username: req.user.username })
+    db.Podcast.findOne({ spotifyID: req.params.id })
       .populate("commentIDs")
-      .then(dbUser => {
-        res.json(dbUser);
+      .then(dbModel => {
+        res.json(dbModel);
       })
       .catch(err => {
         res.json(err);

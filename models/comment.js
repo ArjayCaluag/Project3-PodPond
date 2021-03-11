@@ -10,6 +10,14 @@ const commentSchema = new Schema({
     owner: {
         type: String,
         required: true
+    },
+    spotifyID: {
+        type: String,
+        required: true
+    },
+    postedDate: {
+        type: Date,
+        default: Date.now
     }
 });
 
