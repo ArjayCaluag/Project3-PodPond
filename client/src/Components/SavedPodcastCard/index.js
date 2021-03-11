@@ -98,23 +98,8 @@ function SavedPodcastCard(props) {
   );
 }
 
-<<<<<<< HEAD
-export default SavedPodcastCard;
-<<<<<<< HEAD
-=======
 
-// {podcasts.map((podcast, index) => {
-//   return <SavedPodcastCard
-//     podcast={podcast}
-//     key={index}
-//     onClick={deletePodcast}
-//     image={podcast.image}
-//     title={podcast.title}
-//     publisher={podcast.publisher}
-//     link={podcast.link}
-//   />
-// })}
->>>>>>> 12c3f83443ee680ca3a0d014c732ad003972687c
-=======
 export default SavedPodcastCard;
->>>>>>> 03f3d1df2f3c6046b093864ea369210e4a885fe3
+
+
+
