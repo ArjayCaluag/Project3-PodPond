@@ -37,11 +37,11 @@ function SavedPodcastCard(props) {
     <div className="container savedPodcast">
       <div className="card savedCard">
         <div className="row no-gutters">
-          <div className="col-sm-5">
+          <div className="col-sm-5 m-2">
             <img alt="Podcast thumbnail" src={props.image} className="card-img-thumbnail savedImg"></img>
           </div>
 
-          <div className="col-sm-7">
+          <div className="col-sm-6">
             <div className="card-body">
               <h5 className="card-title">{props.title}</h5>
               <p className="card-text">{props.publisher}</p>
