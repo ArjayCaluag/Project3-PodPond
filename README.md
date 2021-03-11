@@ -38,11 +38,84 @@ The frontend visual elements of the website are entirely constructed in React, w
 
 ## Code Snippets 
 
+This snippet shows two examples of our backend data queries in our `pondController.js` file. When a user posts a comment, the function `newComment` creates a new Comment in the database using specific info passed from the frontend contained in `req.body`. Immediately after the comment is stored, its _id (the Mongoose ObjectID) is pushed into the commentIDs array for the particular podcast that the comment was posted on.
 
+The function `showComments` queries to the Podcast model and populates its array of commentIDs with the full data stored for each of those comments. This populated data is returned to the frontend where we use it to dynamically render React components.
 ```javascript
+// post a comment on a Podcast card
+newComment: function (req, res) {
+    db.Comment.create(req.body)
+      .then(({ _id }) =>
+        db.Podcast.findOneAndUpdate({ spotifyID: req.body.spotifyID }, 
+        { $push: { commentIDs: _id } }, { new: true }))
+      .then(dbModel => {
+        res.json(dbModel);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+},
 
+  // show all comments on each Podcast
+showComments: function (req, res) {
+    db.Podcast.findOne({ spotifyID: req.params.id })
+      .populate("commentIDs")
+      .then(dbModel => {
+        res.json(dbModel);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+}
 ```
 
+This next snippet showcases the function used to save a podcast of the users choice to the database and the implementation of multiple dynamic `PodCastCard` creations. The Wrapper component assists in the styling and spacing for each card that is created.
+```javascript
+const [podcasts, setPodcasts] = useState([]);
+
+function saveToPond(podcast) {
+    API.savePodcast({
+      title: podcast.name,
+      spotifyID: podcast.id,
+      image: podcast.images[1].url,
+      publisher: podcast.publisher,
+      link: podcast.external_urls.spotify
+    });
+  }
+
+return (
+    <Wrapper>
+        {podcasts.map((podcast, index) => {
+          return <PodCastCard
+            podcast={podcast}
+            key={index}
+            onClick={saveToPond}
+            image={podcast.images[1].url}
+            title={podcast.name}
+            publisher={podcast.publisher}
+            link={podcast.external_urls.spotify}
+          />
+        })}
+      </Wrapper>
+);
+```
+
+This final snippet represents storing our Spotify authorization token in a stateful variable, `userObject`, which we modified with `setUserObject` using the useState() React hook. We receive a token for spotify's API, access it through window.location.hash, then set it in our state and local storage.
+```javascript
+useEffect(() => {
+    // Set token
+    console.log("access: ", window.location.hash)
+    let _token = hash.access_token;
+    console.log("token: ", _token)
+    if (_token) {
+      // Set token
+      props.setUserObject({
+        ...props.userObject,
+        token: _token
+      });
+    }
+}, [])
+```
 ## Screenshots
 Example of the *Search* page:
 
