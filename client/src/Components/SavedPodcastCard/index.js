@@ -19,11 +19,21 @@ function SavedPodcastCard(props) {
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    let thisDate = new Date().toLocaleDateString(
+      'en-gb',
+      {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
     setPost("");
     API.saveComment({
       text: post,
       spotifyID: props.podcast.spotifyID,
-      owner: props.userObject.username
+      owner: props.userObject.username,
+      postedDate: thisDate
     })
       .then(() => loadComments());
   }
@@ -89,15 +99,3 @@ function SavedPodcastCard(props) {
 }
 
 export default SavedPodcastCard;
-
-// {podcasts.map((podcast, index) => {
-//   return <SavedPodcastCard
-//     podcast={podcast}
-//     key={index}
-//     onClick={deletePodcast}
-//     image={podcast.image}
-//     title={podcast.title}
-//     publisher={podcast.publisher}
-//     link={podcast.link}
-//   />
-// })}
