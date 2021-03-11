@@ -10,25 +10,24 @@ export default {
     loginUser: function (userData) {
         return axios.post("/api/login", userData);
     },
-    
-    getPodcasts: function(){
+
+    getPodcasts: function () {
         return axios.get("/api/savedpodcasts");
     },
 
-    savePodcast: function (podcastData){
+    savePodcast: function (podcastData) {
         return axios.post("/api/savedpodcasts", podcastData)
     },
 
-    deletePodcast: function (id){
+    deletePodcast: function (id) {
         return axios.delete("/api/podcasts/" + id);
     },
 
-    // queryPodcast: function (query){
-    //     console.log(query);
-    //     return axios.get("api/podcasts/search", {params: {q:query}});
-    // },
+    getComments: function (spotifyID) {
+        return axios.get("/api/podcasts/comments/" + spotifyID);
+    },
 
-    comments: function(){
-        return axios.get("api/podcasts/comments");
+    saveComment: function (commentData) {
+        return axios.post("/api/podcasts/comments", commentData)
     }
 }

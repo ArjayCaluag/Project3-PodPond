@@ -21,9 +21,9 @@ function SavedPodcast(props) {
     console.log("Podcast id:", podcast._id);
     const podcastId = podcast._id;
     API.deletePodcast(podcastId)
-        .then(() => loadPodcasts())
-        .catch((err) => console.log(err));
-}
+      .then(() => loadPodcasts())
+      .catch((err) => console.log(err));
+  }
 
   if (props.userObject.loggedIn) {
     return (
@@ -31,6 +31,7 @@ function SavedPodcast(props) {
         <MyPondJumbotron />
         {podcasts.map((podcast, index) => {
           return <SavedPodcastCard
+            userObject={props.userObject}
             podcast={podcast}
             key={index}
             onClick={deletePodcast}

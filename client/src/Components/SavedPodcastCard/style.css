@@ -1,12 +1,16 @@
 .savedPodcast {
     border-radius: 2px;
     justify-content: center;
-    /* max-width: 1500px;  */
     margin-bottom: 15px;
+}
+
+.savedCard{
+    background-color: floralwhite;
 }
 
 .savedImg{
     max-width: 100% ;
     height: auto;
+    border-radius: 10px;
 }
 
