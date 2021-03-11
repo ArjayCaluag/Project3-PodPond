@@ -27,7 +27,6 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react-bootstrap": "^1.5.1",
-    "react-load-script": "0.0.6",
     "spotify-web-api-node": "^5.0.2"
   }
 }
