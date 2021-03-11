@@ -13,21 +13,7 @@ function App() {
     loggedIn: false,
     token: ""
   });
-  console.log(window);
-  function checkForPlayer() {
-    if (window.Spotify !== null && userObject.token) {
-      console.log("window.spotify: ", window.Spotify);
-      let player = new window.Spotify.Player({
-        name: "Matt's Spotify Player",
-        getOAuthToken: cb => { cb(userObject.token); },
-      });
-      // this.createEventHandlers();
 
-      // finally, connect!
-      player.connect();
-    }
-  }
-  checkForPlayer();
   return (
 
     <Router>
