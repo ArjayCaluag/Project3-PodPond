@@ -15,6 +15,7 @@ function App() {
   });
 
   return (
+
     <Router>
       {userObject.loggedIn && <NavBar userObject={userObject} />}
       <Switch>
