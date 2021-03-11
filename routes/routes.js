@@ -2,7 +2,6 @@ const router = require("express").Router();
 const path = require("path");
 const pondController = require("../controller/pondController");
 const passport = require("../config/passport");
-const axios = require("axios")
 
 // Calls methods from pondController
 
@@ -26,27 +25,20 @@ router.route("/api/savedpodcasts")
     .get(pondController.savedPodcasts)
     .post(pondController.saveNewPodcast)
 
-// router.route("/api/podcasts")
-
 // delete from saved podcast
 router.route("/api/podcasts/:id")
-    .delete(pondController.removePodcast);
+    .delete(pondController.removePodcast)
 
+// routes for comments
 router.route("/api/podcasts/comments")
     .post(pondController.newComment)
+    
+router.route("/api/podcasts/comments/:id")
     .get(pondController.showComments)
 
-
-
-
-
-
-
-
-
 // bottom-most, default route. If no other routes are hit --> send React app
-// router.use(function (req, res) {
-//     res.sendFile(path.join(__dirname, "../client/build/index.html"));
-// });
+router.use(function (req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 module.exports = router;

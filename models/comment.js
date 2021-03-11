@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
+
     text: {
         type: String,
         required: true
@@ -10,6 +11,13 @@ const commentSchema = new Schema({
     owner: {
         type: String,
         required: true
+    },
+    spotifyID: {
+        type: String,
+        required: true
+    },
+    postedDate: {
+        type: String
     }
 });
 

@@ -27,9 +27,9 @@ app.use(routes);
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/podpond", 
 { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

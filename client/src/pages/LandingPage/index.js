@@ -2,7 +2,6 @@ import React from "react";
 import LoginForm from "../../Components/LoginForm";
 
 function LandingPage(props) {
-  console.log("Props loading on LandingPage:", props);
   
   return (
     <div>
