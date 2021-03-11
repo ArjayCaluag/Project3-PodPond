@@ -1,4 +1,4 @@
-PodPond
+# PodPond
 
 ## Description
 This [web application](https://podpond10.herokuapp.com/) deployed on Heroku is a full-stack application built with the MERN stack (Mongo, Express, React, Node). The app allows users to save specific podcasts (hosted on Spotify) to their own account, **MyPond**, where the user can also read and post public comments on each podcast.
